@@ -11,8 +11,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 		allow_promotion_codes : true,
 		shipping_address_collection: {allowed_countries: ['FR']},
 		line_items : lineItems,
-		success_url: `http://localhost:3000/sucess?session_id={CHECKOUT_SESSION_ID}`,
-		cancel_url: 'http://localhost:3000'
+		success_url: `https://www.elpe-clothing.com/sucess?session_id={CHECKOUT_SESSION_ID}`,
+		cancel_url: 'https://www.elpe-clothing.com/'
 	})
 	res.status(200).json({ session })
 }
