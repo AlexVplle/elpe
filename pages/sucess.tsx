@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import Footer from "../components/footer";
-import Header from "../components/header";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 import styles from "../styles/sucess.module.css"
 
 export default function Sucess() {
