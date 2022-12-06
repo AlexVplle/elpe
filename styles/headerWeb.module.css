@@ -1,0 +1,44 @@
+.headerWeb {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #000000;
+    font-family: 'Titillium Web';
+	font-weight: 900;
+    letter-spacing: 0.15em;
+    height: 100px;
+    background-color: white;
+}
+
+.headerElpeClubWeb {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url('../public/background/backgroundForest.png');
+    color: white;
+    letter-spacing: 0.15em;
+    height: 100px;
+    background-color: white;
+}
+
+.equal {
+    flex-basis: 33%;
+}
+
+.nav {
+    display: flex;
+}
+
+.shopping {
+    text-align: right;
+}
+
+.navlink {
+    font-size: 13px;
+    margin: 1em;
+}
+
+.profileLogo {
+    width: 119px;
+}
+

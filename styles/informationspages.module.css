@@ -1,0 +1,13 @@
+.main {
+     width : 70%;
+     margin: 0 auto;
+     padding-bottom: 10%;
+     font-size: 18px;
+     letter-spacing: .04em;
+     line-height: 1.8em;
+ }
+
+.list {
+    list-style-type: disc;
+    padding-inline-start: 10%;
+}

@@ -1,0 +1,53 @@
+.main {
+    padding: 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: .04em;
+    background-color: #FFFFFF;
+    color: rgba(64,64,64,.6);
+    font-size: 1.3em;
+}
+
+.div {
+	height: 10%;
+}
+
+.button {
+	position: static;
+	bottom: 10%;
+}
+
+.container {
+    margin: 30% 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.blackAndWhiteButton {
+    border-radius: 300px;
+    padding: 25px 46px;
+    width: 53%;
+    color: #222222;
+    border-width: 2px;
+    border-style: solid;
+    transition: 0.1s background-color linear, 0.1s color linear;
+    font-size: 20px;
+    letter-spacing: .1em;
+    text-align: center;
+    cursor: pointer;
+}
+
+.blackAndWhiteButton:hover {
+    background-color: #222222;
+    color: #FFFFFF;
+}
+
+@media (max-width: 640px) {
+	.main {
+		display: flex;
+		flex-direction: column;
+	}
+}

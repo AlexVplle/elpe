@@ -1,0 +1,28 @@
+.main {
+	padding: 125px 50px;
+}
+
+.clothes {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	align-items: center;
+	justify-items: center;
+}
+
+.button {
+	position: absolute;
+	right : 10%;
+	border: none;
+	background-color: transparent;
+	width: fit-content;
+	height: fit-content;
+	cursor: pointer;
+}
+
+@media (max-width: 640px) {
+	.clothes {
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+	}
+}

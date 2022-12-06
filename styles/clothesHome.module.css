@@ -1,0 +1,10 @@
+.link {
+	font-family: 'Titillium Web';
+	font-weight: 300;
+    margin: 1em 0 .2em 0;
+}
+
+.price {
+	font-weight: 600;
+	font-family: 'Titillium Web';
+}

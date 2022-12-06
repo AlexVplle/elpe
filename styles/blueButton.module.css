@@ -1,0 +1,20 @@
+.button {
+	margin-top: 5%;
+    width: 200px;
+    height: 50px;
+    border-radius: 300px;
+    border-width: 0;
+    font-size: 15px;
+    background-color: #435CA3;
+    color: #FFFFFF;
+    transition: opacity .1s linear;
+    cursor: pointer;
+}
+
+.button:hover {
+    opacity: 0.75;
+}
+
+.button:active {
+    border-style: none;
+}

@@ -1,0 +1,23 @@
+datasource db {
+    provider = "mongodb"
+    url      = env("DB_CONN_STRING")
+}
+
+generator client {
+    provider = "prisma-client-js"
+    binaryTargets = ["native"]
+}
+
+model Clothes {
+    id     		String  @id @default(auto()) @map("_id") @db.ObjectId
+    name   		String
+    href   		String
+    src    		String[]
+    price  		Float
+    price_id		Json?
+    width  		Int
+    height 		Int
+    alt    		String
+    home   		Boolean
+    description 	String[]
+}

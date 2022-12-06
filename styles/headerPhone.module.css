@@ -1,0 +1,58 @@
+.headerHomeWeb {
+	display: none;
+}
+
+.headerWeb {
+	display: none;
+}
+
+.headerPhone {
+	position: sticky;
+	top: 0;
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	padding-top: 2%;
+	background-color: #000000;
+}
+
+.buttonOpen {
+	padding: 0;
+	background-color: transparent;
+	border: none;
+}
+
+.menu {
+	display: flex;
+	background-color: #160c64;
+	left: 9999px;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	position: fixed;
+	z-index: 3;
+}
+
+.buttonClose {
+	width: 67px;
+	height: 67px;
+	background-color: rgba(79,110,248,.82);
+	border: none;
+	padding: 22px;
+}
+
+.linkSquare {
+    font-family: 'Titillium Web';
+	font-weight: 900;
+	padding: 36px;
+	transform: translate3d(150%,0,0);
+	transition : transform 350ms cubic-bezier(.55,0,.1,1) 100ms
+}
+
+.link {
+	color: #FFFFFF;
+	font-weight: 700;
+	font-size: 30px;
+	padding-bottom: 0.618em;
+}

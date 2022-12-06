@@ -1,0 +1,18 @@
+.main {
+	width: 70%;
+	margin: auto;
+}
+
+.content {
+	margin: 10% 0 0 10%;
+}
+
+.h2 {
+	font-size: 32px;
+	text-align: left;
+	padding-bottom: 0;
+}
+
+.img {
+	object-fit: contain;
+}
