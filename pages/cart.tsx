@@ -13,9 +13,7 @@ import styles from "../styles/cart.module.css"
 export default function Cart() {
 	const [cartItem, setCartArray] = useState<Array<ContentInCart>>([])
 	useEffect(() => {
-		const cart : string | null = localStorage.getItem('cart')
-		if (cart !== null)
-			setCartArray(JSON.parse(cart))
+		localStorage.clear()
 	}, [])
 	function sumItem() {
 		let sum = 0;
