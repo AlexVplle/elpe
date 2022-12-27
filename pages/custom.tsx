@@ -1,8 +1,12 @@
 import { Stage, OrbitControls, useProgress, Html } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { lazy, Suspense } from 'react'
+
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import Configurator from '../components/Configurator'
+
+import { CustomizationProvider } from '../context/customProvider'
 
 import styles from '../styles/custom.module.css'
 
@@ -17,16 +21,19 @@ export default function Custom() {
 	return (
 		<>
 			<Header elpeClub={false}/>
-			<div className={styles.app}>
-					<Canvas>
-						<Suspense fallback={<Loader />}>
-							<OrbitControls enablePan={false} minPolarAngle={-Math.PI / 2} maxPolarAngle={Math.PI / 2} minAzimuthAngle={- Math.PI / 2} maxAzimuthAngle={Math.PI / 2} maxDistance={8} minDistance={5} minZoom={10000} />
-							<Stage environment="city" intensity={0.5}>
-								<Model />
-							</Stage>
-						</Suspense>
-					</Canvas>
-			</div>
+			<CustomizationProvider>
+				<div className={styles.app}>
+						<Canvas>
+							<Suspense fallback={<Loader />}>
+								<OrbitControls enablePan={false} minPolarAngle={-Math.PI / 2} maxPolarAngle={Math.PI / 2} minAzimuthAngle={- Math.PI / 2} maxAzimuthAngle={Math.PI / 2} maxDistance={8} minDistance={5} minZoom={10000} />
+								<Stage environment="city" intensity={0.5}>
+									<Model />
+								</Stage>
+							</Suspense>
+						</Canvas>
+						<Configurator />
+				</div>
+			</CustomizationProvider>
 			<Footer />
 		</>
 	)

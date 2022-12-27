@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router'
 
 import BlueButton from "./BlueButton";
-import Item from '../interfaces/item'
 
-import ContentInCart from '../interfaces/contentInCart';
+import ContentInCart from '../interfacesAndTypes/contentInCart';
+import Item from '../interfacesAndTypes/item'
 
 export default function Checkout({ cart } : { cart : ContentInCart[] }) {
 	const router = useRouter()

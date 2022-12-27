@@ -1,5 +1,6 @@
 .app {
-	width: 100vw;
-	height: 75vh;
-	text-align: center;
+	height: 90vh;
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+
 }
