@@ -1,6 +1,16 @@
 .app {
-	height: 90vh;
 	display: grid;
 	grid-template-columns: 2fr 1fr;
 
+}
+
+.canvas {
+	height: 80vh;
+}
+
+@media (max-width: 640px) {
+	.app {
+		display: flex;
+		flex-direction: column;
+	}
 }
