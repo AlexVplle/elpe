@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-import ImageWithLinkProps from '../interfacesAndTypes/imageWithLinkProps'
+import ImageWithLinkProps from '../interfaces/imageWithLinkProps'
 
 export default function ImageWithLink(props: ImageWithLinkProps) {
     return (

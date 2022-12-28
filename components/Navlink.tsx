@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import NavLinkProps from '../interfacesAndTypes/navlinkProps'
+import NavLinkProps from '../interfaces/navlinkProps'
 
 import styles from '../styles/navlink.module.css'
 
