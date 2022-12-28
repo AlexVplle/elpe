@@ -4,7 +4,7 @@ import Footer from '../components/Footer'
 
 import { getAllClothes } from '../lib/posts'
 
-import ClothesModel from '../interfacesAndTypes/clothesModel'
+import ClothesModel from '../interfaces/clothesModel'
 
 import styles from '../styles/home.module.css'
 

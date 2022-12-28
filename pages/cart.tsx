@@ -6,7 +6,7 @@ import Footer from '../components/Footer'
 import Checkout from "../components/Checkout"
 import ImageWithLink from '../components/ImageWithLink'
 
-import ContentInCart from '../interfacesAndTypes/contentInCart' 
+import ContentInCart from '../interfaces/contentInCart' 
 
 import styles from "../styles/cart.module.css"
 

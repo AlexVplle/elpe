@@ -13,10 +13,10 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 import BlueButton from "../components/BlueButton"
 
-import ContentInCart from '../interfacesAndTypes/contentInCart'
-import Values from '../interfacesAndTypes/values'
-import SizeClothes from '../interfacesAndTypes/sizeClothes'
-import ClothesModel from '../interfacesAndTypes/clothesModel'
+import ContentInCart from '../interfaces/contentInCart'
+import Values from '../interfaces/values'
+import SizeClothes from '../interfaces/sizeClothes'
+import ClothesModel from '../interfaces/clothesModel'
 
 import styles from '../styles/clothes.module.css'
 

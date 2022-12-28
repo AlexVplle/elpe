@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import HeaderWeb from "./HeaderWeb"
 import HeaderPhone from "./HeaderPhone"
 
-import HeaderProps from "../interfacesAndTypes/headerProps"
+import HeaderProps from "../interfaces/headerProps"
 
 export default function Header(props: HeaderProps) {
 	const [isPhone, setIsPhone] = useState(2)

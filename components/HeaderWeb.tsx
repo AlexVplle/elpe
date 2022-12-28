@@ -1,7 +1,7 @@
 import NavLink from './Navlink'
 import ImageWithLink from './ImageWithLink'
 
-import HeaderProps from '../interfacesAndTypes/headerProps'
+import HeaderProps from '../interfaces/headerProps'
 
 import styles from '../styles/headerWeb.module.css'
 
