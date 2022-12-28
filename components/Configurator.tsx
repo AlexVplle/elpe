@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { useCustomization } from "../context/customProvider"
 
 import CustomButton from "./CustomButton"
@@ -5,6 +7,7 @@ import CustomButton from "./CustomButton"
 import styles from '../styles/configurator.module.css'
 
 import { ColorArrayCustom } from "../lib/colorForCustom";
+import { LogoArrayCustom } from "../lib/logoForCustom";
 
 export default function Configurator() {
 	const {
@@ -27,11 +30,14 @@ export default function Configurator() {
 			</div>
 			<div className={styles.rowChoice}>
 				<h3>Logo</h3>
+				<div>
+					{LogoArrayCustom.map((value, index) => <Image key={index} src={value.location} alt={value.logo} width={200} height={200} onClick={() => setLogo(value)}/>)}
+				</div>
 			</div>
 			<div className={styles.rowChoice}>
 				<h3>Couleur du logo</h3>
 				<div>
-					{ColorArrayCustom.map((value, index) => <CustomButton key={index} color={value.color} />)}
+					{ColorArrayCustom.map((value, index) => <CustomButton key={index} color={value.color} OnClick={() => setLogoColor(value)} />)}
 				</div>
 			</div>
 			<div className={styles.rowChoice}>

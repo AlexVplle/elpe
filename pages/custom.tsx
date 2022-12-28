@@ -10,7 +10,7 @@ import { CustomizationProvider } from '../context/customProvider'
 
 import styles from '../styles/custom.module.css'
 
-const Model = lazy(() => import ('../components/Mascot'))
+const Model = lazy(() => import ('../components/ELPEMascot'))
 
 function Loader() {
 	const { progress } = useProgress()
