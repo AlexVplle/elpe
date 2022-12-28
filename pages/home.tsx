@@ -21,9 +21,9 @@ export default function Home({ allClothes }: { allClothes: ClothesModel[] }) {
 			<div className={styles.body}>
 				<Header elpeClub={false}></Header>
 				<main className={styles.main}>
-					{allClothes.map(({ name, href, src, price, width, height, alt, id }) => (
-						<div key={id?.toString()}>
-							<ClothesHome className={styles.clothes} name={name} href={href} src={src} price={price} width={width} height={height} alt={alt}></ClothesHome>
+					{allClothes.map(({ name, href, src, price }, index) => (
+						<div key={index}>
+							<ClothesHome className={styles.clothes} name={name} href={href} src={src} price={price} width={5000} height={5000} alt={name}></ClothesHome>
 						</div>
 					))}
 				</main>

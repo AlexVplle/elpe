@@ -15,9 +15,5 @@ model Clothes {
     src    		String[]
     price  		Float
     price_id		Json?
-    width  		Int
-    height 		Int
-    alt    		String
-    home   		Boolean
     description 	String[]
 }

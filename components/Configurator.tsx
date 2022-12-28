@@ -1,8 +1,10 @@
+import { useState } from "react";
 import Image from "next/image";
 
 import { useCustomization } from "../context/customProvider"
 
 import CustomButton from "./CustomButton"
+import BlueButton from "./BlueButton";
 
 import styles from '../styles/configurator.module.css'
 
@@ -10,14 +12,11 @@ import { ColorArrayCustom } from "../lib/colorForCustom";
 import { LogoArrayCustom } from "../lib/logoForCustom";
 
 export default function Configurator() {
+	const [isProductAdd, setProductAdd] = useState<boolean>(false)
 	const {
-		color, 
 		setColor,
-		logo,
 		setLogo,
-		logoColor,
 		setLogoColor,
-		size,
 		setSize
 	} = useCustomization()
 	return (
@@ -50,6 +49,7 @@ export default function Configurator() {
 					<option value="XXL">XXL</option>
 				</select>
 			</div>
+			<BlueButton content={isProductAdd ? "PRODUIT AJOUTE !" : "AJOUTEZ AU PANIER"}></BlueButton>
 		</div>
 	)
 }
