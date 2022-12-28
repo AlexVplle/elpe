@@ -2,7 +2,7 @@ import Link from "next/link"
 
 import ImageWithLink from "./ImageWithLink"
 
-import ClothesProps from "../interfaces/clothesProps"
+import ClothesProps from "../interfacesAndTypes/clothesProps"
 
 import styles from "../styles/clothesHome.module.css"
 

@@ -1,5 +1,16 @@
 .app {
-	width: 100vw;
-	height: 75vh;
-	text-align: center;
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+
+}
+
+.canvas {
+	height: 80vh;
+}
+
+@media (max-width: 640px) {
+	.app {
+		display: flex;
+		flex-direction: column;
+	}
 }

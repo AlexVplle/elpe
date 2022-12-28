@@ -1,0 +1,27 @@
+.configurator {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.rowChoice {
+	text-align: center;
+	color: #000000;
+	font-size: 30px;
+}
+
+.size {
+	width: 20%;
+	padding: .75em 1.25em;
+	font-size: 3%;
+	border: 0;
+	border-radius: 3px;
+	background-color: rgba(109,109,111,.43);
+}
+
+@media (max-width: 640px) {
+	.main {
+		display: flex;
+		flex-direction: column;
+	}
+}

@@ -1,4 +1,4 @@
-import BlueButtonProps from "../interfaces/blueButtonProps"
+import BlueButtonProps from "../interfacesAndTypes/blueButtonProps"
 
 import styles from "../styles/blueButton.module.css"
 
