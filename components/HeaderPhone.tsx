@@ -9,7 +9,6 @@ export default function HeaderPhone() {
 		document.getElementById('menu')!.style.left = "0px"
 		document.getElementById('linkSquare')!.style.transform = "translate3d(0,0,0)"
 	}
-
 	const removeLateralPanel = function() : void {
 		document.getElementById('menu')!.style.left = "99999px"
 		document.getElementById('linkSquare')!.style.transform = "translate3d(200%,0,0)"

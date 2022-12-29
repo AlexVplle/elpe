@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Image from 'next/image'
 
 import Header from "../components/Header"
@@ -11,19 +11,15 @@ import ContentInCart from '../interfacesAndTypes/contentInCart'
 import styles from "../styles/cart.module.css"
 
 export default function Cart() {
-	const [cartItem, setCartArray] = useState<Array<ContentInCart>>([])
-	useEffect(() => {
-		localStorage.clear()
-	}, [])
-	function sumItem() {
-		let sum = 0;
-		const cartItemArray = cartItem as Array<ContentInCart>
-		for (let i = 0; i < cartItemArray.length; i++)
-			sum += cartItemArray[i].quantity * cartItemArray[i].price
-		return  Math.round(sum * 100) / 100
+	const [cartArray, setCartArray] = useState<Array<ContentInCart>>([])
+	function sumItem() : number {
+		let sum : number = 0;
+		for (let i : number = 0; i < cartArray.length; i++)
+			sum += cartArray[i].quantity * cartArray[i].price
+		return Math.round(sum * 100) / 100
 	}
-	function deleteItem(name : string, taille : string) {
-		const newCart = cartItem.filter(item => item.name != name || item.taille != taille);
+	function deleteItem(name : string, taille : string) : void {
+		const newCart : Array<ContentInCart> = cartArray.filter(item => item.name != name || item.taille != taille);
 		localStorage.setItem('cart', JSON.stringify(newCart))
 		setCartArray(newCart)
 	}
@@ -33,10 +29,10 @@ export default function Cart() {
 			<main className={styles.main}>
 				<h1>Panier</h1>
                 	<hr />
-				{cartItem.map(({ price, name, taille, quantity, src, href, id, width, height, alt }) => (
-					<div key={id}>
+				{cartArray.map(({ price, name, taille, quantity, src, href } : ContentInCart, index : number) => (
+					<div key={index}>
 						<div className={styles.clothes}>
-							<ImageWithLink src={src} href={href} width={width} height={height} alt={alt}></ImageWithLink>
+							<ImageWithLink src={src} href={href} width={5000} height={5000} alt={name}></ImageWithLink>
 							<div>
 								<h3>{name}</h3>
 								<h3>Taille : {taille}</h3>
@@ -49,7 +45,7 @@ export default function Cart() {
 					</div>
 				))}
 				<h3>Sous total : {sumItem()} €</h3>
-				{ sumItem() ? <Checkout cart={cartItem}/> : null}
+				{ sumItem() ? <Checkout cart={cartArray}/> : null}
 			</main>
 			<Footer />
 		</>

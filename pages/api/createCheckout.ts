@@ -6,7 +6,7 @@ const stripe = new Stripe(stripeAPI, { apiVersion: '2022-08-01'})
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 	const { lineItems } = JSON.parse(req.body)
-	const session = await stripe.checkout.sessions.create({
+	const session : Stripe.Response<Stripe.Checkout.Session> = await stripe.checkout.sessions.create({
 		mode: 'payment',
 		allow_promotion_codes : true,
 		shipping_address_collection: {allowed_countries: ['FR', 'DE', 'AR', 'BE', 'BR', 'CA', 'CN', 'KR', 'ES', 'GR', 'GF', 'IT', 'GB', 'US']},

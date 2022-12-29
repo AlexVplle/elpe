@@ -5,8 +5,8 @@ import HeaderPhone from "./HeaderPhone"
 
 import HeaderProps from "../interfacesAndTypes/headerProps"
 
-export default function Header(props: HeaderProps) {
-	const [isPhone, setIsPhone] = useState(2)
+export default function Header({ elpeClub } : HeaderProps) {
+	const [isPhone, setIsPhone] = useState<number>(2)
 	useEffect(() => {
 		const match : MediaQueryList = window.matchMedia('(max-width: 640px)')
 		const matchOrNot = function(){
@@ -18,6 +18,6 @@ export default function Header(props: HeaderProps) {
 		return () => match.removeEventListener('change', matchOrNot)
 	})
 	return (
-		<>{isPhone ? <HeaderPhone /> : <HeaderWeb elpeClub={props.elpeClub} />}</>
+		<>{isPhone ? <HeaderPhone /> : <HeaderWeb elpeClub={elpeClub} />}</>
 	)
 }

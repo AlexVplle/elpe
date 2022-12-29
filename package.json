@@ -17,7 +17,7 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@prisma/client": "^4.7.1",
+    "@prisma/client": "^4.8.0",
     "@react-three/drei": "^9.43.3",
     "@react-three/fiber": "^8.9.1",
     "@stripe/stripe-js": "^1.44.1",
@@ -29,7 +29,7 @@
     "eslint": "8.23.1",
     "eslint-config-next": "12.3.0",
     "formik": "^2.2.9",
-    "prisma": "^4.7.1",
+    "prisma": "^4.8.0",
     "react-responsive-carousel": "^3.2.23",
     "sharp": "^0.31.1",
     "stripe": "^10.17.0",

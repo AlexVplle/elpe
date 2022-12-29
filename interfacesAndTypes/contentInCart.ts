@@ -1,12 +1,9 @@
-import Values from './values'
-
-export default interface contentInCart extends Required<Values> {
-			name : string
-			src : string
-			href : string
-			price : number
-			alt : string
-			id : string
-			width : number
-			height : number
+export default interface contentInCart {
+	name : string
+	src : string
+	price : number
+	href : string
+	price_id : string,
+	taille : string,
+	quantity : number
 }

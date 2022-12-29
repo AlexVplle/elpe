@@ -19,7 +19,7 @@ export default function Footer() {
 		return () => match.removeEventListener('change', matchOrNot)
 	})
 	const switchMenu = function() {
-		const arrow = document.getElementById('arrow')!.style
+		const arrow : CSSStyleDeclaration = document.getElementById('arrow')!.style
 		if (isDisplayMenu) {
 			setDisplayMenu(false)
 			arrow.transform = 'rotate(0deg)'

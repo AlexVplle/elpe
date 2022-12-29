@@ -12,10 +12,7 @@ import styles from '../styles/custom.module.css'
 
 const Model = lazy(() => import ('../components/ELPEMascot'))
 
-function Loader() {
-	const { progress } = useProgress()
-	return <Html center>{progress} % loaded</Html>
-}
+const Loader = () => <Html center>{useProgress().progress} % loaded</Html>
 
 export default function Custom() {
 	return (

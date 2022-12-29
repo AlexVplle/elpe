@@ -1,5 +1,7 @@
+import { MouseEventHandler } from "react"
+
 export default interface BlueButtonProps {
     content: string
-    onClick?: any
+    onClick: MouseEventHandler<HTMLButtonElement>
 }
 

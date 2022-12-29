@@ -7,11 +7,15 @@ import { useCustomization } from "../context/customProvider";
 import { LogoArrayCustom } from '../lib/logoForCustom';
 
 import { ModelType } from '../interfacesAndTypes/model'
+import CustomizationContext from '../interfacesAndTypes/CustomizationContext';
 
-export default function Model(props: JSX.IntrinsicElements['group']) {
-  const { nodes, materials } = useGLTF('/mascot/ELPEMascot.gltf') as unknown as ModelType
-  const { color, logo, logoColor } = useCustomization()
-  const arrayLogo = [
+export default function Model() {
+  const { nodes, materials } : ModelType = useGLTF('/mascot/ELPEMascot.gltf') as unknown as ModelType
+  const customization : CustomizationContext | null = useCustomization()
+  if (customization === null)
+  	return <></>
+  const { color, logo, logoColor } = customization
+  const arrayLogo : Array<JSX.Element> = [
       <mesh geometry={nodes.Classic_logo.geometry} material={materials.Material_classic_logo} position={[-1.53, 4.92, 1.52]} rotation={[1.54, 0, 0]} scale={[10.39, 1.05, 10.39]} key={0} />,
       <mesh geometry={nodes.World_logo.geometry} material={materials.Material_world_logo} position={[-1.25, 5.74, 1.38]} rotation={[1.54, 0, 0]} scale={[0.03, 0.08, 0.03]} key={1} />,
       <mesh geometry={nodes.Spiral_logo.geometry} material={materials.Material_spiral_logo} position={[-1.1, 5.31, 3.53]} rotation={[1.56, 0, 0]} scale={[6.1, 1.02, 6.1]}  key={2}/>,
@@ -25,7 +29,7 @@ export default function Model(props: JSX.IntrinsicElements['group']) {
   materials.Material_spiral_logo.color = new THREE.Color(logoColor.color)
   materials.Material_flower_logo.color = new THREE.Color(logoColor.color)
   return (
-    <group {...props} dispose={null}>
+    <group>
       <mesh geometry={nodes.Ear_ring.geometry} material={materials.Material_ear_ring} position={[-0.68, 8.23, 0.24]} rotation={[-0.28, -0.71, -2.08]} />
       <mesh geometry={nodes.Hand.geometry} material={materials.Material_skin} position={[-1.75, 4.93, -0.26]} rotation={[0.07, -1.26, 0]} />
       <mesh geometry={nodes.Ear.geometry} material={materials.Material_skin} position={[-0.01, 8.41, 0.24]} rotation={[0.07, 0, 0]} />
@@ -46,7 +50,7 @@ export default function Model(props: JSX.IntrinsicElements['group']) {
         <mesh geometry={nodes.Geometry_shoes_3.geometry} material={materials.Material_shoe3} />
       </group>
       <mesh geometry={nodes.Pants.geometry} material={materials.Material_pants} position={[-0.02, 4.85, 0.13]} rotation={[0.07, 0, 0]} scale={5.19} />
-	 {arrayLogo[LogoArrayCustom.findIndex((value) => value.logo == logo.logo)]}
+	 {arrayLogo[LogoArrayCustom.findIndex((value) => value.name == logo.name)]}
     </group>
   )
 }

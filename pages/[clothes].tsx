@@ -5,6 +5,7 @@ import { NextPageContext } from "next"
 import Image from "next/image"
 import { Field, Formik, Form, ErrorMessage } from 'formik'
 import { Carousel } from 'react-responsive-carousel'
+import { ParsedUrlQuery } from 'querystring'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 import { getOneClothes } from "../lib/posts"
@@ -14,50 +15,44 @@ import Footer from "../components/Footer"
 import BlueButton from "../components/BlueButton"
 
 import ContentInCart from '../interfacesAndTypes/contentInCart'
-import Values from '../interfacesAndTypes/values'
 import SizeClothes from '../interfacesAndTypes/sizeClothes'
-import ClothesModel from '../interfacesAndTypes/clothesModel'
 
 import styles from '../styles/clothes.module.css'
 
 export async function getServerSideProps(context : NextPageContext) {
-	const { clothes } = context.query
+	const { clothes } : ParsedUrlQuery = context.query
 	const clothesRequested : Clothes = await getOneClothes(clothes as string)
 	return {
 		props: { clothesRequested } 
 	}
 }
 
-function addItem(cartContentString : string | null, values : Values, clothesRequested : Clothes){
-	const newContent : ContentInCart = {
-		name : clothesRequested.name,
-		taille : values.taille as string,
-		quantity : values.quantity as number,
-		src : `/clothes/${clothesRequested.src[0]}`,
-		href : clothesRequested.href,
-		price : clothesRequested.price,
-		price_id : (clothesRequested.price_id as unknown as SizeClothes)[values.taille as ("S" | "M" | "L" | "XL" | "XXL")],
-		alt : clothesRequested.alt,
-		id : clothesRequested.id,
-		width : clothesRequested.width,
-		height : clothesRequested.height
-	}
-	if (cartContentString === null)
-		return JSON.stringify([newContent])
-	const cartContent : Array<ContentInCart> = JSON.parse(cartContentString)
-	let isAdd = false;
-	cartContent.forEach((clothes : ContentInCart) => {
-		if (newContent.name == clothes.name && newContent.taille == clothes.taille && !isAdd) {
-			clothes.quantity += newContent.quantity
-			isAdd = true
-		}
-	})
-	if (!isAdd)
-		cartContent.push(newContent)
-	return JSON.stringify(cartContent)
- }
+// function addItem(cartContentString : string | null, clothesRequested : ContentInCart){
+// 	const newContent : ContentInCart = {
+// 		name : clothesRequested.name,
+// 		taille : clothesRequested.taille as string,
+// 		quantity : values.quantity as number,
+// 		src : `/clothes/${clothesRequested.src[0]}`,
+// 		href : clothesRequested.href,
+// 		price : clothesRequested.price,
+// 		price_id : (clothesRequested.price_id as unknown as SizeClothes)[values.taille as ("S" | "M" | "L" | "XL" | "XXL")],
+// 	}
+// 	if (cartContentString === null)
+// 		return JSON.stringify([newContent])
+// 	const cartContent : Array<ContentInCart> = JSON.parse(cartContentString)
+// 	let isAdd = false;
+// 	cartContent.forEach((clothes : ContentInCart) => {
+// 		if (newContent.name == clothes.name && newContent.taille == clothes.taille && !isAdd) {
+// 			clothes.quantity += newContent.quantity
+// 			isAdd = true
+// 		}
+// 	})
+// 	if (!isAdd)
+// 		cartContent.push(newContent)
+// 	return JSON.stringify(cartContent)
+//  }
 
-export default function ClothesRender({ clothesRequested } : { clothesRequested : ClothesModel }) {
+export default function ClothesRender({ clothesRequested } : { clothesRequested : Clothes }) {
 	const [isPhone, setIsPhone] = useState<number>(2)
 	const [isProductAdd, setProductAdd] = useState<boolean>(false)
 	useEffect(() => {

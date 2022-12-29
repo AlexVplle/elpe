@@ -1,15 +1,17 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from "react"
 
-import { ColorArrayCustom } from "../lib/colorForCustom";
-import { LogoArrayCustom } from "../lib/logoForCustom";
+import CustomizationContext from "../interfacesAndTypes/CustomizationContext"
 
-const CustomizationContext = createContext<any>({})
+import { ColorArrayCustom } from "../lib/colorForCustom"
+import { LogoArrayCustom } from "../lib/logoForCustom"
 
-export function CustomizationProvider(props : {children : JSX.Element}) {
+const CustomizationContext = createContext<CustomizationContext | null>(null)
+
+export function CustomizationProvider({ children } : {children : JSX.Element}) {
 	const [color, setColor] = useState(ColorArrayCustom[0])
 	const [logo, setLogo] = useState(LogoArrayCustom[0])
 	const [logoColor, setLogoColor] = useState(ColorArrayCustom[0])
-	const [size, setSize] = useState('S')
+	const [size, setSize] = useState<'S' | 'M' | 'L' | 'XL' | 'XXL'>('S')
 	return (
 		<CustomizationContext.Provider value={{
 			color, 
@@ -21,12 +23,11 @@ export function CustomizationProvider(props : {children : JSX.Element}) {
 			size,
 			setSize
 		}}>
-			{props.children}
+			{children}
 		</CustomizationContext.Provider>
 	)
 }
 
 export function useCustomization() {
-	const context = useContext(CustomizationContext)
-	return context
+	return useContext(CustomizationContext)
 }

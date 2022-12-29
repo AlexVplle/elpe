@@ -1,18 +1,18 @@
 export const LogoArrayCustom = [
 	{
-		logo: 'Classic',
+		name: 'Classic',
 		location: '/logo/classic.png'
 	},
 	{
-		logo: 'World',
+		name: 'World',
 		location: '/logo/world.png'
 	},
 	{
-		logo: 'Spiral',
+		name: 'Spiral',
 		location: '/logo/spiral.png'
 	},
 	{
-		logo: 'Flower',
+		name: 'Flower',
 		location: '/logo/flower.png'
 	},
 ]

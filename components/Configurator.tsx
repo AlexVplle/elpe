@@ -3,7 +3,6 @@ import Image from "next/image";
 
 import { useCustomization } from "../context/customProvider"
 
-import CustomButton from "./CustomButton"
 import BlueButton from "./BlueButton";
 
 import styles from '../styles/configurator.module.css'
@@ -11,32 +10,32 @@ import styles from '../styles/configurator.module.css'
 import { ColorArrayCustom } from "../lib/colorForCustom";
 import { LogoArrayCustom } from "../lib/logoForCustom";
 
+import CustomizationContext from "../interfacesAndTypes/CustomizationContext";
+
 export default function Configurator() {
 	const [isProductAdd, setProductAdd] = useState<boolean>(false)
-	const {
-		setColor,
-		setLogo,
-		setLogoColor,
-		setSize
-	} = useCustomization()
+	const customization : CustomizationContext | null = useCustomization()
+	if (customization === null)
+		return <></>
+	const { setColor, setLogo, setLogoColor, setSize } = customization
 	return (
 		<div className={styles.configurator}>
 			<div className={styles.rowChoice}>
 				<h3>Couleur</h3>
 				<div>
-					{ColorArrayCustom.map((value, index) => <CustomButton key={index} color={value.color} OnClick={() => setColor(value)}/>)}
+					{ColorArrayCustom.map((value, index) => <button key={index} className={styles.button} style={{ backgroundColor: value.color }} onClick={() => setColor(value)} />)}
 				</div>
 			</div>
 			<div className={styles.rowChoice}>
 				<h3>Logo</h3>
 				<div>
-					{LogoArrayCustom.map((value, index) => <Image key={index} src={value.location} alt={value.logo} width={200} height={200} onClick={() => setLogo(value)}/>)}
+					{LogoArrayCustom.map((value, index) => <Image key={index} src={value.location} alt={value.name} width={200} height={200} onClick={() => setLogo(value)}/>)}
 				</div>
 			</div>
 			<div className={styles.rowChoice}>
 				<h3>Couleur du logo</h3>
 				<div>
-					{ColorArrayCustom.map((value, index) => <CustomButton key={index} color={value.color} OnClick={() => setLogoColor(value)} />)}
+					{ColorArrayCustom.map((value, index) => <button key={index} className={styles.button} style={{ backgroundColor: value.color }} onClick={() => setLogoColor(value)} />)}
 				</div>
 			</div>
 			<div className={styles.rowChoice}>
@@ -49,7 +48,7 @@ export default function Configurator() {
 					<option value="XXL">XXL</option>
 				</select>
 			</div>
-			<BlueButton content={isProductAdd ? "PRODUIT AJOUTE !" : "AJOUTEZ AU PANIER"}></BlueButton>
+			<BlueButton content={isProductAdd ? "PRODUIT AJOUTE !" : "AJOUTEZ AU PANIER"} onClick={() => null}></BlueButton>
 		</div>
 	)
 }
