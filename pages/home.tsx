@@ -1,29 +1,30 @@
+import { Clothes } from '@prisma/client'
+
 import ClothesHome from '../components/ClothesHome'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
 import { getAllClothes } from '../lib/posts'
 
-import ClothesModel from '../interfaces/clothesModel'
-
 import styles from '../styles/home.module.css'
 
+
 export async function getServerSideProps() {
-    const allClothes = await getAllClothes()
+    const allClothes : Array<Clothes> = await getAllClothes()
     return {
         props: { allClothes }
     }
 }
 
-export default function Home({ allClothes }: { allClothes: ClothesModel[] }) {
+export default function Home({ allClothes }: { allClothes: Clothes[] }) {
 	return (
 		<>
 			<div className={styles.body}>
 				<Header elpeClub={false}></Header>
 				<main className={styles.main}>
-					{allClothes.map(({ name, href, src, price, width, height, alt, id }) => (
-						<div key={id?.toString()}>
-							<ClothesHome className={styles.clothes} name={name} href={href} src={src} price={price} width={width} height={height} alt={alt}></ClothesHome>
+					{allClothes.map(({ name, href, src, price }, index) => (
+						<div key={index}>
+							<ClothesHome name={name} href={href} src={src[0]} price={price} ></ClothesHome>
 						</div>
 					))}
 				</main>

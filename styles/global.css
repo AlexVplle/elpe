@@ -6,6 +6,7 @@ html {
 }
 
 body {
+	height: 100%;
 	font-family: 'Courier Prime';
     margin: 0;
     color: rgba(64,64,64,.6);
@@ -22,13 +23,13 @@ a:hover {
     text-decoration: none;
 }
 
- ul {
+ul {
     list-style-type: none;
     padding-inline-start: 0;
- }
+}
 
- h2 {
+h2 {
      text-align: center;
      color: #383838;
      padding-bottom: 10%;
- }
+}

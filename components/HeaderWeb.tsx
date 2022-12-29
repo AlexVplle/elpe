@@ -1,14 +1,14 @@
 import NavLink from './Navlink'
 import ImageWithLink from './ImageWithLink'
 
-import HeaderProps from '../interfaces/headerProps'
+import HeaderProps from '../interfacesAndTypes/headerProps'
 
 import styles from '../styles/headerWeb.module.css'
 
-export default function HeaderWeb(props : HeaderProps) : JSX.Element {
+export default function HeaderWeb({ elpeClub } : HeaderProps) {
 	return (
 		<>
-			<header className={props.elpeClub ? styles.headerElpeClubWeb : styles.headerWeb}>
+			<header className={elpeClub ? styles.headerElpeClubWeb : styles.headerWeb}>
 				<nav className={`${styles.nav} ${styles.equal}`}>
 					<div className={styles.navlink}><NavLink name='ACCUEIL' href='/home'></NavLink></div>
 					<div className={styles.navlink}><NavLink name='ELPE CLUB' href='/elpeClub'></NavLink></div>

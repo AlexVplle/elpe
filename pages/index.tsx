@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router'
+import { NextRouter, useRouter } from 'next/router'
 import Image from 'next/image'
 
 import HeadAPP from '../components/Head'
@@ -6,7 +6,7 @@ import HeadAPP from '../components/Head'
 import styles from '../styles/index.module.css'
 
 export default function Index() {
-	const router = useRouter()
+	const router : NextRouter = useRouter()
 	const redirectHome = function() {
 		router.push('/home')
 		document.getElementById('text')!.style.display = 'none'
