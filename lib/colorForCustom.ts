@@ -1,18 +1,18 @@
 export const ColorArrayCustom = [
 	{
 		color: '#edd5a4',
-		name: 'Beige'
+		name: 'BEIGE'
 	},
 	{
 		color: '#8638c6',
-		name: 'Violet'
+		name: 'VIOLET'
 	},
 	{
 		color: '#73beff',
-		name: 'Bleu ciel'
+		name: 'BLEU CIEL'
 	},
 	{
 		color: '#00632e',
-		name: 'Vert sapin'
+		name: 'VERT SAPIN'
 	},
 ]

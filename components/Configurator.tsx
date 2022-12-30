@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
+import { Field, Formik, Form } from 'formik'
 
 import { useCustomization } from "../context/customProvider"
 
@@ -9,15 +10,18 @@ import styles from '../styles/configurator.module.css'
 
 import { ColorArrayCustom } from "../lib/colorForCustom";
 import { LogoArrayCustom } from "../lib/logoForCustom";
+import { addItem } from "../lib/cart";
 
 import CustomizationContext from "../interfacesAndTypes/CustomizationContext";
+import { Clothes } from "@prisma/client";
+import ValueForm from "../interfacesAndTypes/valueForm";
 
-export default function Configurator() {
+export default function Configurator({ clothes } : { clothes : Clothes }) {
 	const [isProductAdd, setProductAdd] = useState<boolean>(false)
 	const customization : CustomizationContext | null = useCustomization()
 	if (customization === null)
 		return <></>
-	const { setColor, setLogo, setLogoColor, setSize } = customization
+	const { color, setColor, logo, setLogo, logoColor, setLogoColor } = customization
 	return (
 		<div className={styles.configurator}>
 			<div className={styles.rowChoice}>
@@ -39,16 +43,31 @@ export default function Configurator() {
 				</div>
 			</div>
 			<div className={styles.rowChoice}>
-				<h3>Taille</h3>
-				<select className={styles.size}>
-					<option value="S">S</option>
-					<option value="M">M</option>
-					<option value="L">L</option>
-					<option value="XL">XL</option>
-					<option value="XXL">XXL</option>
-				</select>
+				<Formik initialValues={{ taille : 'S', quantity : 1 }} onSubmit={({ taille, quantity } : ValueForm) => {
+					clothes.name += ` (BASE ${color.name}; LOGO ${logo.name} ${logoColor.name})`
+					addItem(clothes, taille, quantity)
+					setProductAdd(true)
+				}}>
+						<Form className={styles.form}>
+							<div className={`${styles.contentBox} ${styles.labelForm}`}>
+								<label htmlFor="taille"><h3>TAILLE :</h3></label>
+								<Field as="select" name="taille" className={styles.input}>
+									<option value="">Sélectionnez votre taille</option>
+									<option value="S">S</option>
+									<option value="M">M</option>
+									<option value="L">L</option>
+									<option value="XL">XL</option>
+									<option value="XXL">XXL</option>
+								</Field>
+							</div>
+							<div className={`${styles.contentBox} ${styles.labelForm}`}>
+								<label htmlFor="quantity"><h3>QUANTITÉ :</h3></label>
+								<Field name='quantity' max="9999" min="1" type="number" placeholder="1" className={styles.input}/>
+								<BlueButton content={isProductAdd ? "PRODUIT AJOUTE !" : "AJOUTEZ AU PANIER"}></BlueButton>
+							</div>
+						</Form>
+					</Formik>
 			</div>
-			<BlueButton content={isProductAdd ? "PRODUIT AJOUTE !" : "AJOUTEZ AU PANIER"} onClick={() => null}></BlueButton>
 		</div>
 	)
 }

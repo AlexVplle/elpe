@@ -14,7 +14,6 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 import BlueButton from "../components/BlueButton"
 
-import ContentInCart from '../interfacesAndTypes/contentInCart'
 import SizeClothes from '../interfacesAndTypes/sizeClothes'
 
 import styles from '../styles/clothes.module.css'
@@ -27,30 +26,6 @@ export async function getServerSideProps(context : NextPageContext) {
 	}
 }
 
-// function addItem(cartContentString : string | null, clothesRequested : ContentInCart){
-// 	const newContent : ContentInCart = {
-// 		name : clothesRequested.name,
-// 		taille : clothesRequested.taille as string,
-// 		quantity : values.quantity as number,
-// 		src : `/clothes/${clothesRequested.src[0]}`,
-// 		href : clothesRequested.href,
-// 		price : clothesRequested.price,
-// 		price_id : (clothesRequested.price_id as unknown as SizeClothes)[values.taille as ("S" | "M" | "L" | "XL" | "XXL")],
-// 	}
-// 	if (cartContentString === null)
-// 		return JSON.stringify([newContent])
-// 	const cartContent : Array<ContentInCart> = JSON.parse(cartContentString)
-// 	let isAdd = false;
-// 	cartContent.forEach((clothes : ContentInCart) => {
-// 		if (newContent.name == clothes.name && newContent.taille == clothes.taille && !isAdd) {
-// 			clothes.quantity += newContent.quantity
-// 			isAdd = true
-// 		}
-// 	})
-// 	if (!isAdd)
-// 		cartContent.push(newContent)
-// 	return JSON.stringify(cartContent)
-//  }
 
 export default function ClothesRender({ clothesRequested } : { clothesRequested : Clothes }) {
 	const [isPhone, setIsPhone] = useState<number>(2)

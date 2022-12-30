@@ -9,12 +9,21 @@ import Configurator from '../components/Configurator'
 import { CustomizationProvider } from '../context/customProvider'
 
 import styles from '../styles/custom.module.css'
+import { Clothes } from '@prisma/client'
 
 const Model = lazy(() => import ('../components/ELPEMascot'))
 
 const Loader = () => <Html center>{useProgress().progress} % loaded</Html>
 
-export default function Custom() {
+export default function ElpeByYouHoodie() {
+	const hoodie : Clothes = {
+		id: '1',
+		name: 'ELPE BY YOU HOODIE',
+		href: '/elpe-by-you-hoodie',
+		src: ["teeBipolar/front.png"],
+		price: 59.99,
+		description: []
+	}
 	return (
 		<>
 			<Header elpeClub={false}/>
@@ -30,7 +39,7 @@ export default function Custom() {
 								</Suspense>
 							</Canvas>
 						</div>
-						<Configurator />
+						<Configurator clothes={hoodie}/>
 				</div>
 			</CustomizationProvider>
 			<Footer />

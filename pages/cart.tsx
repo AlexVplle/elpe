@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 
 import Header from "../components/Header"
@@ -9,20 +9,13 @@ import ImageWithLink from '../components/ImageWithLink'
 import ContentInCart from '../interfacesAndTypes/contentInCart' 
 
 import styles from "../styles/cart.module.css"
+import { deleteItem, getCart, getTotalPrice } from '../lib/cart'
 
 export default function Cart() {
 	const [cartArray, setCartArray] = useState<Array<ContentInCart>>([])
-	function sumItem() : number {
-		let sum : number = 0;
-		for (let i : number = 0; i < cartArray.length; i++)
-			sum += cartArray[i].quantity * cartArray[i].price
-		return Math.round(sum * 100) / 100
-	}
-	function deleteItem(name : string, taille : string) : void {
-		const newCart : Array<ContentInCart> = cartArray.filter(item => item.name != name || item.taille != taille);
-		localStorage.setItem('cart', JSON.stringify(newCart))
-		setCartArray(newCart)
-	}
+	useEffect(() => {
+		setCartArray(getCart())
+	}, [])
 	return (
 		<>
 			<Header elpeClub={false}/>
@@ -39,13 +32,13 @@ export default function Cart() {
 							</div>
 							<h3>Quantité : {quantity}</h3>
 							<h3>{quantity * price} €</h3>
-							<button className={styles.button} onClick={() => deleteItem(name, taille)}><Image src='/icons/closeBlack.png' alt='closeIcon' width={20} height={20} ></Image></button>
+							<button className={styles.button} onClick={() => setCartArray(deleteItem(name, taille))}><Image src='/icons/closeBlack.png' alt='closeIcon' width={20} height={20} ></Image></button>
 						</div>
 						<hr />
 					</div>
 				))}
-				<h3>Sous total : {sumItem()} €</h3>
-				{ sumItem() ? <Checkout cart={cartArray}/> : null}
+				<h3>Sous total : {getTotalPrice(cartArray)} €</h3>
+				{ getTotalPrice(cartArray) ? <Checkout cart={cartArray}/> : null}
 			</main>
 			<Footer />
 		</>

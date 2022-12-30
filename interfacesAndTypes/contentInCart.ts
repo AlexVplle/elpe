@@ -3,7 +3,6 @@ export default interface contentInCart {
 	src : string
 	price : number
 	href : string
-	price_id : string,
 	taille : string,
 	quantity : number
 }
