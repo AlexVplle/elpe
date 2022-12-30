@@ -7,13 +7,13 @@ const stripe = new Stripe(stripeAPI, { apiVersion: '2022-08-01'})
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 	const { cart } : { cart : Array<contentInCart> }= JSON.parse(req.body)
-	const lineItems : Array<{ price: string, quantity: number}> = await Promise.all(cart.map(async ({ name, price, quantity }) => {
+	const lineItems : Array<{ price: string, quantity: number}> = await Promise.all(cart.map(async ({ name, price, quantity, taille }) => {
 		const productFound = await stripe.products.search({
-			query:`name~'${name}'`
+			query:`name~'${name} EN TAILLE ${taille}'`
 		})
 		if (!productFound.data.length) {
 			const { default_price } = await stripe.products.create({
-				name : name,
+				name : `${name} EN TAILLE ${taille}`,
 				default_price_data: {
 					currency: 'eur',
 					unit_amount: price * 100,

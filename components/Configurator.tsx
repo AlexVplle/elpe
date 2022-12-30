@@ -50,7 +50,7 @@ export default function Configurator({ clothes } : { clothes : Clothes }) {
 				}}>
 						<Form className={styles.form}>
 							<div className={`${styles.contentBox} ${styles.labelForm}`}>
-								<label htmlFor="taille"><h3>TAILLE :</h3></label>
+								<label htmlFor="taille"><h3>Taille :</h3></label>
 								<Field as="select" name="taille" className={styles.input}>
 									<option value="">Sélectionnez votre taille</option>
 									<option value="S">S</option>
@@ -61,7 +61,7 @@ export default function Configurator({ clothes } : { clothes : Clothes }) {
 								</Field>
 							</div>
 							<div className={`${styles.contentBox} ${styles.labelForm}`}>
-								<label htmlFor="quantity"><h3>QUANTITÉ :</h3></label>
+								<label htmlFor="quantity"><h3>Quantité :</h3></label>
 								<Field name='quantity' max="9999" min="1" type="number" placeholder="1" className={styles.input}/>
 								<BlueButton content={isProductAdd ? "PRODUIT AJOUTE !" : "AJOUTEZ AU PANIER"}></BlueButton>
 							</div>

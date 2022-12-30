@@ -11,7 +11,7 @@ import { CustomizationProvider } from '../context/customProvider'
 import styles from '../styles/custom.module.css'
 import { Clothes } from '@prisma/client'
 
-const Model = lazy(() => import ('../components/ELPEMascot'))
+const Model = lazy(() => import ('../components/ELPEMascotHoodie'))
 
 const Loader = () => <Html center>{useProgress().progress} % loaded</Html>
 
