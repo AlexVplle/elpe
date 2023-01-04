@@ -6,11 +6,11 @@ import { useCustomizationTee } from "../context/customProvider";
 
 import { LogoArrayCustom } from '../lib/logoForCustom';
 
-import { ModelTee } from '../interfacesAndTypes/model'
+import { ModelTeeType } from '../interfacesAndTypes/model'
 import CustomizationContext from '../interfacesAndTypes/CustomizationContext';
 
 export default function Model() {
-  const { nodes, materials } = useGLTF('/mascot/ELPEMascotTee.gltf') as unknown as ModelTee
+  const { nodes, materials } = useGLTF('/mascot/ELPEMascotTee.gltf') as unknown as ModelTeeType
   const customization : CustomizationContext | null = useCustomizationTee()
   if (customization === null)
   	return <></>
@@ -33,8 +33,8 @@ export default function Model() {
       <mesh geometry={nodes.Ear.geometry} material={materials.Material_skin} position={[-0.01, 8.41, 0.05]} rotation={[0.07, 0, 0]} />
       <mesh geometry={nodes.Neck.geometry} material={materials.Material_skin} position={[-0.01, 7.73, -0.03]} rotation={[0.07, 0, 0]} />
       <group position={[-0.01, 8.63, 0.3]} rotation={[0.07, 0, 0]} scale={5.14}>
-        <mesh geometry={nodes.Mesh_3.geometry} material={materials.Material_skin2} />
-        <mesh geometry={nodes.Mesh_4.geometry} material={materials.material_head} />
+        <mesh geometry={nodes.Mesh003.geometry} material={materials.Material_skin2} />
+        <mesh geometry={nodes.Mesh003_1.geometry} material={materials.material_head} />
       </group>
       <mesh geometry={nodes.Tee.geometry} material={materials.Material_tee} position={[-0.02, 5.96, -0.03]} rotation={[Math.PI / 2, 0, 0]} />
       <group position={[0.94, -0.07, 0.11]} rotation={[1.64, 0, -0.38]} scale={0.47}>
