@@ -1,73 +1,83 @@
 import { useState } from "react";
 import Image from "next/image";
-import { Field, Formik, Form } from 'formik'
 
-import { useCustomization } from "../context/customProvider"
+import { useCustomizationHoodie, useCustomizationTee } from "../context/customProvider"
 
 import BlueButton from "./BlueButton";
 
 import styles from '../styles/configurator.module.css'
 
-import { ColorArrayCustom } from "../lib/colorForCustom";
+import { ColorLogo, ColorHoodieBase, ColorTeeBase } from "../lib/colorForCustom";
 import { LogoArrayCustom } from "../lib/logoForCustom";
 import { addItem } from "../lib/cart";
 
 import CustomizationContext from "../interfacesAndTypes/CustomizationContext";
 import { Clothes } from "@prisma/client";
-import ValueForm from "../interfacesAndTypes/valueForm";
+
 
 export default function Configurator({ clothes } : { clothes : Clothes }) {
 	const [isProductAdd, setProductAdd] = useState<boolean>(false)
-	const customization : CustomizationContext | null = useCustomization()
-	if (customization === null)
-		return <></>
-	const { color, setColor, logo, setLogo, logoColor, setLogoColor } = customization
+	const customizationHoodie : CustomizationContext = useCustomizationHoodie() as CustomizationContext
+	const customizationTee : CustomizationContext = useCustomizationTee() as CustomizationContext
+	console.log(customizationTee);
+	const { color, setColor, logo, setLogo, logoColor, setLogoColor } = clothes.name.includes('HOODIE') ? customizationHoodie : customizationTee
+	const addCustomItem = () => {
+		const tailleElement : HTMLSelectElement = document.getElementById('size') as HTMLSelectElement
+		const quantityElement : HTMLInputElement = document.getElementById('quantity') as HTMLInputElement
+		const tailleString : string = tailleElement.value
+		const quantity : number = Number(quantityElement.value)
+		if (!['S', 'M', 'L', 'XL', 'XXL'].includes(tailleString))
+			return
+		const taille : 'S' | 'M' | 'L' | 'XL' | 'XXL' = tailleString as 'S' | 'M' | 'L' | 'XL' | 'XXL'
+
+		const clothesToSend : Clothes = {...clothes}
+		console.log(clothesToSend);
+		console.log(taille, quantity)
+		clothesToSend.name += ` (BASE ${color.name}; LOGO ${logo.name} ${logoColor.name})`
+		addItem(clothesToSend, taille, quantity)
+		setProductAdd(true)
+		setTimeout(() => setProductAdd(false), 1000)
+	}
 	return (
 		<div className={styles.configurator}>
 			<div className={styles.rowChoice}>
-				<h3>Couleur</h3>
-				<div>
-					{ColorArrayCustom.map((value, index) => <button key={index} className={styles.button} style={{ backgroundColor: value.color }} onClick={() => setColor(value)} />)}
+				<h3 className={styles.h3}>Couleur</h3>
+				<div className={styles.buttonPlace}>
+					{(clothes.name.includes('HOODIE') ? ColorHoodieBase : ColorTeeBase).map((value, index) => <div key={index} className={styles.buttonDiv}><button className={`${styles.button} ${value.name == logoColor.name ? styles.button_active : ""}`} style={{ backgroundColor: value.color }} onClick={() => setColor(value)} /></div>)}
 				</div>
+				<div></div>
 			</div>
 			<div className={styles.rowChoice}>
-				<h3>Logo</h3>
-				<div>
-					{LogoArrayCustom.map((value, index) => <Image key={index} src={value.location} alt={value.name} width={200} height={200} onClick={() => setLogo(value)}/>)}
+				<h3 className={styles.h3}>Logo</h3>
+				<div className={styles.logoPlace}>
+					{LogoArrayCustom.map((value, index) => <div key={index} className={`${styles.logo} ${value.name == logo.name ? styles.logo_active : ""}`}><Image src={value.location} alt={value.name} width={200} height={200} onClick={() => setLogo(value)}/></div>)}
 				</div>
+				<div></div>
 			</div>
 			<div className={styles.rowChoice}>
-				<h3>Couleur du logo</h3>
-				<div>
-					{ColorArrayCustom.map((value, index) => <button key={index} className={styles.button} style={{ backgroundColor: value.color }} onClick={() => setLogoColor(value)} />)}
+				<h3 className={styles.h3}>Couleur du logo</h3>
+				<div className={styles.buttonPlace}>
+					{ColorLogo.map((value, index) => <div key={index} className={styles.buttonDiv}><button className={`${styles.button} ${value.name == logoColor.name ? styles.button_active : ""}`} style={{ backgroundColor: value.color }} onClick={() => setLogoColor(value)} /></div>)}
 				</div>
+				<div></div>
 			</div>
 			<div className={styles.rowChoice}>
-				<Formik initialValues={{ taille : 'S', quantity : 1 }} onSubmit={({ taille, quantity } : ValueForm) => {
-					clothes.name += ` (BASE ${color.name}; LOGO ${logo.name} ${logoColor.name})`
-					addItem(clothes, taille, quantity)
-					setProductAdd(true)
-				}}>
-						<Form className={styles.form}>
-							<div className={`${styles.contentBox} ${styles.labelForm}`}>
-								<label htmlFor="taille"><h3>Taille :</h3></label>
-								<Field as="select" name="taille" className={styles.input}>
-									<option value="">Sélectionnez votre taille</option>
-									<option value="S">S</option>
-									<option value="M">M</option>
-									<option value="L">L</option>
-									<option value="XL">XL</option>
-									<option value="XXL">XXL</option>
-								</Field>
-							</div>
-							<div className={`${styles.contentBox} ${styles.labelForm}`}>
-								<label htmlFor="quantity"><h3>Quantité :</h3></label>
-								<Field name='quantity' max="9999" min="1" type="number" placeholder="1" className={styles.input}/>
-								<BlueButton content={isProductAdd ? "PRODUIT AJOUTE !" : "AJOUTEZ AU PANIER"}></BlueButton>
-							</div>
-						</Form>
-					</Formik>
+				<h3 className={styles.h3}>Taille</h3>
+				<select name="taille" id="size" className={styles.input}>
+					<option value="S">S</option>
+					<option value="M">M</option>
+					<option value="L">L</option>
+					<option value="XL">XL</option>
+					<option value="XXL">XXL</option>
+				</select>
+				<div></div>
 			</div>
+			<div className={styles.rowChoice}>
+				<h3 className={styles.h3}>Quantité</h3>
+				<input id="quantity" name='quantity' max="9999" min="1" type="number" defaultValue="1" className={styles.input}/>
+				<div></div>
+			</div>
+			<BlueButton content={isProductAdd ? "PRODUIT AJOUTE !" : "AJOUTEZ AU PANIER"} onClick={addCustomItem}></BlueButton>
 		</div>
 	)
 }

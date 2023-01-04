@@ -9,7 +9,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 	const { cart } : { cart : Array<contentInCart> }= JSON.parse(req.body)
 	const lineItems : Array<{ price: string, quantity: number}> = await Promise.all(cart.map(async ({ name, price, quantity, taille }) => {
 		const productFound = await stripe.products.search({
-			query:`name~'${name} EN TAILLE ${taille}'`
+			query:`name~'${name} TAILLE ${taille}'`
 		})
 		if (!productFound.data.length) {
 			const { default_price } = await stripe.products.create({
@@ -30,7 +30,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 		allow_promotion_codes : true,
 		shipping_address_collection: {allowed_countries: ['FR', 'DE', 'AR', 'BE', 'BR', 'CA', 'CN', 'KR', 'ES', 'GR', 'GF', 'IT', 'GB', 'US']},
 		line_items : lineItems,
-		success_url: `${process.env.BASE_URL}/sucess?session_id={CHECKOUT_SESSION_ID}`,
+		success_url: `http://locahost:3002/sucess?session_id={CHECKOUT_SESSION_ID}`,
 		cancel_url: 'https://www.elpe-clothing.com/'
 	})
 	res.status(200).json({ session })

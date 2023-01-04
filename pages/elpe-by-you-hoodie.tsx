@@ -3,10 +3,9 @@ import { Canvas } from '@react-three/fiber'
 import { lazy, Suspense } from 'react'
 
 import Header from '../components/Header'
-import Footer from '../components/Footer'
 import Configurator from '../components/Configurator'
 
-import { CustomizationProvider } from '../context/customProvider'
+import { CustomizationProviderHoodie } from '../context/customProvider'
 
 import styles from '../styles/custom.module.css'
 import { Clothes } from '@prisma/client'
@@ -25,9 +24,9 @@ export default function ElpeByYouHoodie() {
 		description: []
 	}
 	return (
-		<>
+		<div className={styles.body}>
 			<Header elpeClub={false}/>
-			<CustomizationProvider>
+			<CustomizationProviderHoodie>
 				<div className={styles.app}>
 						<div className={styles.canvas}>
 							<Canvas>
@@ -41,8 +40,7 @@ export default function ElpeByYouHoodie() {
 						</div>
 						<Configurator clothes={hoodie}/>
 				</div>
-			</CustomizationProvider>
-			<Footer />
-		</>
+			</CustomizationProviderHoodie>
+		</div>
 	)
 }

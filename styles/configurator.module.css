@@ -1,21 +1,25 @@
 .configurator {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-evenly;
 	align-items: center;
+	overflow-y: scroll;
 }
 
 .rowChoice {
-	margin: 5% 0;
-	width: 80%;
+	margin-bottom: 10%;
 	text-align: center;
 	color: #000000;
-	font-size: 30px;
+	font-size: 20px;
 }
 
 .contentBox {
 	margin: 5%;
 	align-items: center;
+}
+
+.form {
+	display: flex;
+	flex-direction: row;
 }
 
 .labelForm {
@@ -35,17 +39,38 @@
 	background-color: rgba(109,109,111,.43);
 }
 
+.logoPlace {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.logo:hover{
+	opacity: .6;
+}
+
+.logo_active {
+	background-color: #DCDCDC;
+}
+
+.buttonPlace {
+	display: flex;
+	justify-content: center;
+}
+
+.buttonDiv {
+	margin: 3%;
+}
+
 .button {
 	width: 50px;
 	height: 50px;
 	border-radius: 50%;
-	border-width: 0;
-	margin: 0 3%;
+	margin: 3%;
+	border: 1px solid black;
 }
 
-.button:active {
-    border-style: none;
-    color: black;
+.button_active {
+	border-width: 3px;
 }
 
 .button:hover {
@@ -60,8 +85,37 @@
 }
 
 @media (max-width: 640px) {
-	.main {
+	.configurator {
+		display: flex;
+		flex-direction: row;
+		overflow-x: scroll;
+		height: 30%;
+	}
+
+	.logoPlace {
+		display: flex;
+	}
+
+	.h3 {
+		margin: 0;
+		width: max-content;
+	}
+
+	.rowChoice {
+		margin: 10% 10% 0 10%;
 		display: flex;
 		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		height: 100%;
+	}
+
+	.button {
+		width: 50px;
+		height: 50px;
+	}
+
+	.logo {
+		width: max-content;
 	}
 }

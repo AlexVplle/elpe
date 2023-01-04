@@ -1,3 +1,15 @@
+.main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 90vh;
+}
+
+.canvas {
+	width: 100vw;
+	height: 70vh;
+}
+
 .button {
 	border: solid 1px black;
 	background-color: transparent;
