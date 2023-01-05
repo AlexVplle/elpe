@@ -90,6 +90,7 @@
 		flex-direction: row;
 		overflow-x: scroll;
 		height: 30vh;
+		overflow-y: hidden;
 	}
 
 	.logoPlace {
