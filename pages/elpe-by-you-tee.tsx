@@ -32,7 +32,7 @@ export default function ElpeByYouHoodie() {
 							<Canvas>
 								<Suspense fallback={<Loader />}>
 									<OrbitControls enablePan={false} minPolarAngle={-Math.PI / 2} maxPolarAngle={Math.PI / 2} minAzimuthAngle={- Math.PI / 2} maxAzimuthAngle={Math.PI / 2} maxDistance={8} minDistance={5} minZoom={10000} />
-									<Stage environment="city" intensity={0.5}>
+									<Stage environment="city" intensity={0.2}>
 										<Model />
 									</Stage>
 								</Suspense>

@@ -52,7 +52,6 @@ export default function Configurator({ clothes } : { clothes : Clothes }) {
 				<div className={styles.logoPlace}>
 					{LogoArrayCustom.map((value, index) => <div key={index} className={`${styles.logo} ${value.name == logo.name ? styles.logo_active : ""}`}><Image src={value.location} alt={value.name} width={200} height={200} onClick={() => setLogo(value)}/></div>)}
 				</div>
-				<div></div>
 			</div>
 			<div className={styles.rowChoice}>
 				<h3 className={styles.h3}>Couleur du logo</h3>

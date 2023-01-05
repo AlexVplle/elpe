@@ -40,7 +40,7 @@ export default function ModelHoodie() {
         <mesh geometry={nodes.Mesh003_1.geometry} material={materials.material_head} />
       </group>
       <mesh geometry={nodes.Hoodie_pocket.geometry} material={materials.Material_hoodie_pocket} position={[-0.02, 4.97, 1.04]} rotation={[1.59, 0, 0]} />
-      <mesh geometry={nodes.Hood.geometry} material={materials.Material_hood} position={[0.04, 7.82, -0.15]} rotation={[1.64, 0, 0]} />
+      <mesh geometry={nodes.Hood.geometry} material={materials.Material_hood} position={[0.03, 7.82, -0.15]} rotation={[1.64, 0, 0]} />
       <mesh geometry={nodes.Lace_hoodie.geometry} material={materials.Material_lace_hoodie} position={[0.02, 6.51, 0.94]} rotation={[1.64, 0, 0]} />
       <mesh geometry={nodes.Hoodie_under_shirt.geometry} material={materials.Material_hoodie_under_shirt} position={[-0.01, 7.67, 0.16]} rotation={[0.14, 0, 0]} />
       <mesh geometry={nodes.Hoodie.geometry} material={materials.Material_hoodie} position={[0.01, 5.73, 0.18]} rotation={[Math.PI / 2, 0, 0]} scale={1.49} />

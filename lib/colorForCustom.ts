@@ -1,15 +1,15 @@
 export const ColorTeeBase = [
 	{
+		color: '#ffffff',
+		name: 'BLANCHE'
+	},
+	{
 		color: '#006934',
 		name: 'VERT'
 	},
 	{
 		color: '#000000',
 		name: 'NOIRE'
-	},
-	{
-		color: '#ffffff',
-		name: 'BLANCHE'
 	},
 	{
 		color: '#002e66',
@@ -30,6 +30,10 @@ export const ColorHoodieBase = [
 
 export const ColorLogo = [
 	{
+		color: '#73beff',
+		name: 'BLEU CIEL'
+	},
+	{
 		color: '#ffffff',
 		name: 'BLANC'
 	},
@@ -40,10 +44,6 @@ export const ColorLogo = [
 	{
 		color: '#8638c6',
 		name: 'VIOLET'
-	},
-	{
-		color: '#73beff',
-		name: 'BLEU CIEL'
 	},
 	{
 		color: '#00632e',

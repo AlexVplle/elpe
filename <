@@ -1,0 +1,25 @@
+.body {
+	height: 100vh;
+}
+
+.app {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	height: 90vh;
+}
+
+.canvas {
+	height: 100%;
+	background-color: #F0F0F0;
+}
+
+@media (max-width: 640px) {
+	.app {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.canvas {
+		height: 70%;
+	}
+}
