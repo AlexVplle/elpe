@@ -9,12 +9,12 @@ export const getCart = () : Array<ContentInCart> => {
 		return JSON.parse(cartArrayString)
 }
 
-export const addItem = ({ name, src, href, price } : Clothes, taille : 'S' | 'M' | 'L' | 'XL' | 'XXL', quantity : number) : void => {
+export const addItem = ({ name, href, price } : Clothes, taille : 'S' | 'M' | 'L' | 'XL' | 'XXL' | '30x40cm' | '45x60cm', quantity : number, src : string) : void => {
 	const newContent : ContentInCart = {
 		name : name,
 		taille : taille,
 		quantity : quantity,
-		src : `/clothes/${src[0]}`,
+		src : `/clothes/${src}`,
 		href : href,
 		price : price,
 	}

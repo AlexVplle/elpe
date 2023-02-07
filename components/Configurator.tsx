@@ -34,7 +34,7 @@ export default function Configurator({ clothes } : { clothes : Clothes }) {
 		console.log(clothesToSend);
 		console.log(taille, quantity)
 		clothesToSend.name += ` (BASE ${color.name}; LOGO ${logo.name} ${logoColor.name})`
-		addItem(clothesToSend, taille, quantity)
+		addItem(clothesToSend, taille, quantity, clothes.src[0])
 		setProductAdd(true)
 		setTimeout(() => setProductAdd(false), 1000)
 	}
