@@ -31,7 +31,7 @@ export default function Cart() {
 								<h3>Taille : {taille}</h3>
 							</div>
 							<h3>Quantité : {quantity}</h3>
-							<h3>{quantity * price} €</h3>
+							<h3>{Math.round(quantity * price * 100) / 100} €</h3>
 							<button className={styles.button} onClick={() => setCartArray(deleteItem(name, taille))}><Image src='/icons/closeBlack.png' alt='closeIcon' width={20} height={20} ></Image></button>
 						</div>
 						<hr />
