@@ -46,12 +46,13 @@ export default function ClothesRender({ clothesRequested } : { clothesRequested 
 			<main className={styles.main}>
 				{isPhone ? <h1 className={`${styles.contentBox} ${styles.name}`}>{clothesRequested.name}</h1> : null }
 				<Carousel infiniteLoop autoPlay emulateTouch interval={5000} showStatus={false} renderThumbs={() => clothesRequested.src.map((img, index) => <div key={index}><Image src={`/clothes/${img}`} alt="logo" width={5000} height={5000}></Image></div>)}>
-      				{clothesRequested.src.map((img, index) => <div key={index} ><img src={`/clothes/${img}`} alt={`preview ${index}`}/></div>)}
+      				{clothesRequested.src.map((img, index) => <div key={index} ><img src={`/clothes/${img}`} alt={`preview ${index}`}/><p className='legend'>{img.split('/').reverse()[0].slice(0, -4)}</p></div>)}
   				</Carousel>
 				<div className={styles.content}>
 					{isPhone ? null : <h1 className={`${styles.contentBox} ${styles.name}`}>{clothesRequested.name}</h1>}
-					<h3 className={`${styles.contentBox} ${styles.price}`}>Rupture de Stock</h3>
+					<h3 className={`${styles.contentBox} ${styles.price}`}>{clothesRequested.price}</h3>
 					<p className={styles.contentBox}>{clothesRequested.description.map(function(string, index) {return (<span key={index}><span>{string}</span><br /><br /></span>)})}</p>
+					<BlueButton content={isProductAdd ? "PRODUIT AJOUTE !" : "AJOUTEZ AU PANIER"}></BlueButton>
 				</div>
 			</main>
 			<Footer />

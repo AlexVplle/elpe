@@ -1,26 +1,32 @@
-.main {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	height: 90vh;
-}
-
-.canvas {
+.image {
+	position: fixed;
 	width: 100vw;
-	height: 70vh;
+	height: 100vh;
+	background-image: url('../public/poster/poster1.png');
+	background-size: cover;
+	background-position: right 15%;
+	z-index: 10;
+	display: grid;
+	grid-template-areas: 
+	"a a a"
+	"a a a"
+	"a b a";
 }
 
 .button {
-	border: solid 1px black;
+	border: solid 1px white;
 	background-color: transparent;
 	width: fit-content;
 	height: fit-content;
+	margin-top: 20%;
 	border-radius: 300px;
 	padding: 10px;
 	font-size: 35px;
 	font-family: 'Courier Prime';
+	color: #FFFFFF;
 	transition: opacity .1s linear;
 	cursor: pointer;
+	grid-area: b;
 }
 
 .button:hover {
