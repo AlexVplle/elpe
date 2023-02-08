@@ -8,7 +8,7 @@ import ContentInCart from '../interfacesAndTypes/contentInCart'
 export default function Checkout({ cart } : { cart : Array<ContentInCart> }) {
 	const router : NextRouter = useRouter()
 	const redirectToCheckout : MouseEventHandler<HTMLButtonElement> = () => { 
-		fetch(`http://localhost:3001/api/createCheckout`,
+		fetch(`https://elpe-git-next-collec-alexvplle.vercel.app/api/createCheckout`,
 		{
 			method: 'POST',
 			body: JSON.stringify({ cart })

@@ -11,14 +11,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 		const productFound = await stripe.products.search({
 			query:`name~'${name} TAILLE ${taille}'`
 		})
+		console.log()
 		if (!productFound.data.length) {
 			const { default_price } = await stripe.products.create({
 				name : `${name} EN TAILLE ${taille}`,
 				default_price_data: {
 					currency: 'eur',
-					unit_amount: price * 100,
+					unit_amount: Math.round(price * 100),
 				},
 				shippable: true,
+				images: [
+					`https://res.cloudinary.com/dkxhy1nwn/${name.split(' ').slice(0, 5).join('%20')}`
+				]
 			})
 			return { price: default_price as string, quantity: quantity}
 		}
@@ -30,7 +34,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 		allow_promotion_codes : true,
 		shipping_address_collection: {allowed_countries: ['FR', 'DE', 'AR', 'BE', 'BR', 'CA', 'CN', 'KR', 'ES', 'GR', 'GF', 'IT', 'GB', 'US']},
 		line_items : lineItems,
-		success_url: `http://locahost:3002/sucess?session_id={CHECKOUT_SESSION_ID}`,
+		success_url: `https://elpe-git-next-collec-alexvplle.vercel.app/sucess?session_id={CHECKOUT_SESSION_ID}`,
 		cancel_url: 'https://www.elpe-clothing.com/'
 	})
 	res.status(200).json({ session })

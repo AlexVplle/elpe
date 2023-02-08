@@ -15,8 +15,6 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 import BlueButton from "../components/BlueButton"
 
-import SizeClothes from '../interfacesAndTypes/sizeClothes'
-
 import styles from '../styles/clothes.module.css'
 
 export async function getServerSideProps(context : NextPageContext) {
