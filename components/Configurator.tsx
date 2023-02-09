@@ -19,7 +19,6 @@ export default function Configurator({ clothes } : { clothes : Clothes }) {
 	const [isProductAdd, setProductAdd] = useState<boolean>(false)
 	const customizationHoodie : CustomizationContext = useCustomizationHoodie() as CustomizationContext
 	const customizationTee : CustomizationContext = useCustomizationTee() as CustomizationContext
-	console.log(customizationTee);
 	const { color, setColor, logo, setLogo, logoColor, setLogoColor } = clothes.name.includes('HOODIE') ? customizationHoodie : customizationTee
 	const addCustomItem = () => {
 		const tailleElement : HTMLSelectElement = document.getElementById('size') as HTMLSelectElement
@@ -43,7 +42,7 @@ export default function Configurator({ clothes } : { clothes : Clothes }) {
 			<div className={styles.rowChoice}>
 				<h3 className={styles.h3}>Couleur</h3>
 				<div className={styles.buttonPlace}>
-					{(clothes.name.includes('HOODIE') ? ColorHoodieBase : ColorTeeBase).map((value, index) => <div key={index} className={styles.buttonDiv}><button className={`${styles.button} ${value.name == logoColor.name ? styles.button_active : ""}`} style={{ backgroundColor: value.color }} onClick={() => setColor(value)} /></div>)}
+					{(clothes.name.includes('HOODIE') ? ColorHoodieBase : ColorTeeBase).map((value, index) => <div key={index} className={styles.buttonDiv}><button className={`${styles.button} ${value.name == color.name ? styles.button_active : ""}`} style={{ backgroundColor: value.color }} onClick={() => setColor(value)} /></div>)}
 				</div>
 				<div></div>
 			</div>

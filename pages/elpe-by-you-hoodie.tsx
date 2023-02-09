@@ -23,9 +23,11 @@ export async function getServerSideProps() {
 }
 
 export default function ClothesRender({ clothesRequested } : { clothesRequested : Clothes }) {
+	const [isClicked, setClicked] = useState<boolean>(false)
 	const [isPhone, setIsPhone] = useState<number>(2)
 	const router : NextRouter = useRouter()
 	const redirectCustom = function() {
+		setClicked(true)
 		router.push('/custom-hoodie')
 	}
 	useEffect(() => {
@@ -50,7 +52,7 @@ export default function ClothesRender({ clothesRequested } : { clothesRequested 
 					{isPhone ? null : <h1 className={`${styles.contentBox} ${styles.name}`}>{clothesRequested.name}</h1>}
 					<h3 className={`${styles.contentBox} ${styles.price}`}>{clothesRequested.price} €</h3>
 					<p className={styles.contentBox}>{clothesRequested.description.map(function(string, index) {return (<span key={index}><span>{string}</span><br /><br /></span>)})}</p>
-					<BlueButton content="PERSONNALISER" onClick={redirectCustom}></BlueButton>
+					<BlueButton content={isClicked ? "VEUILLEZ PATIENTER..." : "PERSONNALISER"} onClick={redirectCustom}></BlueButton>
 				</div>
 			</main>
 			<Footer />
