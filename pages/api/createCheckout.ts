@@ -7,13 +7,14 @@ const stripe = new Stripe(stripeAPI, { apiVersion: '2022-08-01'})
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 	const { cart } : { cart : Array<contentInCart> }= JSON.parse(req.body)
-	const lineItems : Array<{ price: string, quantity: number}> = await Promise.all(cart.map(async ({ name, price, quantity, taille }) => {
-		const productFound = await stripe.products.search({
-			query:`name~'${name} TAILLE ${taille}'`
-		})
-		const { default_price } = productFound.data[0]
-			return { price: default_price as string, quantity: quantity}
-	}))
+	const lineItems = [{ price : 'price_1MZgzLJAtKEdmzDNDGTHC76l', quantity: 3 }]
+	// const lineItems : Array<{ price: string, quantity: number}> = await Promise.all(cart.map(async ({ name, price, quantity, taille }) => {
+	// 	const productFound = await stripe.products.search({
+	// 		query:`name~'${name} TAILLE ${taille}'`
+	// 	})
+	// 	const { default_price } = productFound.data[0]
+	// 		return { price: default_price as string, quantity: quantity}
+	// }))
 	const session : Stripe.Response<Stripe.Checkout.Session> = await stripe.checkout.sessions.create({
 		mode: 'payment',
 		allow_promotion_codes : true,
