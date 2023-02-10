@@ -20,7 +20,7 @@ export default function ElpeByYouHoodie() {
 		name: 'ELPE BY YOU TEE',
 		href: '/elpe-by-you-tee',
 		src: ["byYou/teeByYou.png"],
-		price: 29.99,
+		price: 25.99,
 		description: []
 	}
 	return (
