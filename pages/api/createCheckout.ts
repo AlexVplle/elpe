@@ -11,20 +11,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 		const productFound = await stripe.products.search({
 			query:`name~'${name} TAILLE ${taille}'`
 		})
-		if (productFound.data.length == 0) {
-			const { default_price } = await stripe.products.create({
-				name : `${name} EN TAILLE ${taille}`,
-				default_price_data: {
-					currency: 'eur',
-					unit_amount: Math.round(price * 100),
-				},
-				shippable: true,
-				images: [
-					`https://res.cloudinary.com/dkxhy1nwn/${name.split(' ').slice(0, 5).join('%20')}`
-				]
-			})
-			return { price: default_price as string, quantity: quantity}
-		}
 		const { default_price } = productFound.data[0]
 			return { price: default_price as string, quantity: quantity}
 	}))
