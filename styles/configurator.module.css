@@ -1,29 +1,76 @@
 .configurator {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-evenly;
 	align-items: center;
+	overflow-y: scroll;
 }
 
 .rowChoice {
-	margin: 5% 0;
-	width: 80%;
+	margin-bottom: 10%;
 	text-align: center;
 	color: #000000;
+	font-size: 20px;
+}
+
+.contentBox {
+	margin: 5%;
+	align-items: center;
+}
+
+.form {
+	display: flex;
+	flex-direction: row;
+}
+
+.labelForm {
 	font-size: 30px;
+	color: #000000;
+	display: flex;
+	flex-direction: column;
+}
+
+.input {
+	width: fit-content;
+	margin: 2%;
+	padding: .75em 1.25em;
+	font-size: 12px;
+	border: 0;
+	border-radius: 3px;
+	background-color: rgba(109,109,111,.43);
+}
+
+.logoPlace {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.logo:hover{
+	opacity: .6;
+}
+
+.logo_active {
+	background-color: #DCDCDC;
+}
+
+.buttonPlace {
+	display: flex;
+	justify-content: center;
+}
+
+.buttonDiv {
+	margin: 3%;
 }
 
 .button {
 	width: 50px;
 	height: 50px;
 	border-radius: 50%;
-	border-width: 0;
-	margin: 0 3%;
+	margin: 3%;
+	border: 1px solid black;
 }
 
-.button:active {
-    border-style: none;
-    color: black;
+.button_active {
+	border-width: 3px;
 }
 
 .button:hover {
@@ -38,8 +85,40 @@
 }
 
 @media (max-width: 640px) {
-	.main {
+	.configurator {
+		display: flex;
+		flex-direction: row;
+		overflow-x: scroll;
+		height: 30vh;
+		overflow-y: hidden;
+	}
+
+	.logoPlace {
+		display: flex;
+		width: 100vw;
+	}
+
+	.h3 {
+		margin: 0;
+		width: max-content;
+	}
+
+	.rowChoice {
+		padding: 0 10vw 0 0;
+		margin-bottom: 0;
 		display: flex;
 		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+		height: 100%;
+	}
+
+	.buttonPlace {
+		width: 100vw;
+	}
+
+	.button {
+		width: 50px;
+		height: 50px;
 	}
 }

@@ -18,6 +18,8 @@ export default function Header({ elpeClub } : HeaderProps) {
 		return () => match.removeEventListener('change', matchOrNot)
 	})
 	return (
-		<>{isPhone ? <HeaderPhone /> : <HeaderWeb elpeClub={elpeClub} />}</>
+		<>
+			{isPhone ? <HeaderPhone /> : <HeaderWeb elpeClub={elpeClub} />}
+		</>
 	)
 }

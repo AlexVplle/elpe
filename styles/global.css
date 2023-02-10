@@ -10,7 +10,6 @@ body {
 	font-family: 'Courier Prime';
     margin: 0;
     color: rgba(64,64,64,.6);
-    display: grid;
     background-color: #FFFFFF;
 }
 

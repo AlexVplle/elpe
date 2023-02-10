@@ -14,6 +14,5 @@ model Clothes {
     href   		String
     src    		String[]
     price  		Float
-    price_id		Json
     description 	String[]
 }

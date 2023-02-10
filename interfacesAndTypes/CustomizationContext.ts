@@ -7,6 +7,4 @@ export default interface CustomizationContext {
 	setLogo: Dispatch<SetStateAction<{ name: string, location: string }>>
 	logoColor: { name: string, color: string }
 	setLogoColor: Dispatch<SetStateAction<{ name: string, color: string }>>
-	size: 'S' | 'M' | 'L' | 'XL' | 'XXL'
-	setSize: Dispatch<SetStateAction<'S' | 'M' | 'L' | 'XL' | 'XXL'>>
 }

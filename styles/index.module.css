@@ -2,9 +2,9 @@
 	position: fixed;
 	width: 100vw;
 	height: 100vh;
-	background-image: url('../public/picture/accueil.jpg');
+	background-image: url('../public/poster/poster1.png');
 	background-size: cover;
-	background-position: center;
+	background-position: right 15%;
 	z-index: 10;
 	display: grid;
 	grid-template-areas: 

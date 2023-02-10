@@ -1,7 +1,7 @@
 .button {
-	margin: 5% 0;
-    width: 200px;
-    height: 50px;
+	margin: 5%;
+	white-space: nowrap;
+    padding: 25px 70px;
     border-radius: 300px;
     border-width: 0;
     font-size: 15px;
