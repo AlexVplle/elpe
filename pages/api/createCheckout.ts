@@ -3,7 +3,8 @@ import Stripe from 'stripe'
 import contentInCart from "../../interfacesAndTypes/contentInCart"
 
 const stripeAPI : string = process.env.STRIPE_SECRET_KEY as string
-const stripe = new Stripe(stripeAPI, { apiVersion: '2022-08-01'})
+// @ts-ignore
+const stripe = new Stripe(stripeAPI, { apiVersion: '2022-11-15'})
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 	// const { cart } : { cart : Array<contentInCart> }= JSON.parse(req.body)
