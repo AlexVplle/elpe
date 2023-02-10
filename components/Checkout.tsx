@@ -16,7 +16,8 @@ export default function Checkout({ cart } : { cart : Array<ContentInCart> }) {
 			body: JSON.stringify({ cart })
 		})
 		.then((res : Response) => res.json())
-		.then((data) => router.push(data.session.url))
+		.then((data) => console.log(data))
+		// .then((data) => router.push(data.session.url))
 	}
 	return <BlueButton onClick={redirectToCheckout} content={isClicked ? "VEUILLEZ PATIENTER..." : "PAIEMENT"}></BlueButton>
 }
