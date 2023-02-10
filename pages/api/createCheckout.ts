@@ -22,5 +22,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 		success_url: `https://www.elpe-clothing.com/sucess?session_id={CHECKOUT_SESSION_ID}`,
 		cancel_url: 'https://www.elpe-clothing.com/'
 	})
-	res.status(200).json({ session })
+	res.status(200).json({ 'test' : 'test' })
 }
