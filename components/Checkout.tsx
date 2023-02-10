@@ -10,7 +10,7 @@ export default function Checkout({ cart } : { cart : Array<ContentInCart> }) {
 	const router : NextRouter = useRouter()
 	const redirectToCheckout : MouseEventHandler<HTMLButtonElement> = () => { 
 		setClicked(true)
-		fetch(`https://elpe-git-next-collec-alexvplle.vercel.app/api/createCheckout`,
+		fetch(`https://www.elpe-clothing.com/api/createCheckout`,
 		{
 			method: 'POST',
 			body: JSON.stringify({ cart })
