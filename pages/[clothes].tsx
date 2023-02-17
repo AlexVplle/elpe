@@ -96,7 +96,6 @@ export default function ClothesRender({ clothesRequested } : { clothesRequested 
 							<div className={`${styles.contentBox} ${styles.labelForm}`}>
 								<label htmlFor="quantity">QUANTITÉ :</label>
 								<Field name='quantity' max="9999" min="1" type="number" placeholder="1" className={styles.input}/>
-								<BlueButton content={isProductAdd ? "PRODUIT AJOUTE !" : "AJOUTEZ AU PANIER"}></BlueButton>
 							</div>
 						</Form>
 					</Formik>
