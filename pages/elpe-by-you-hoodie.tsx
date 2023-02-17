@@ -50,7 +50,7 @@ export default function ClothesRender({ clothesRequested } : { clothesRequested 
   				</Carousel>
 				<div className={styles.content}>
 					{isPhone ? null : <h1 className={`${styles.contentBox} ${styles.name}`}>{clothesRequested.name}</h1>}
-					<h3 className={`${styles.contentBox} ${styles.price}`}>{clothesRequested.price} €</h3>
+					<h3 className={`${styles.contentBox} ${styles.price}`}>RUPTURE DE STOCK</h3>
 					<p className={styles.contentBox}>{clothesRequested.description.map(function(string, index) {return (<span key={index}><span>{string}</span><br /><br /></span>)})}</p>
 					<BlueButton content={isClicked ? "VEUILLEZ PATIENTER..." : "PERSONNALISER"} onClick={redirectCustom}></BlueButton>
 				</div>
