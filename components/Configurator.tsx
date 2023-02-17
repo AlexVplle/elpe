@@ -75,7 +75,6 @@ export default function Configurator({ clothes } : { clothes : Clothes }) {
 				<input id="quantity" name='quantity' max="9999" min="1" type="number" defaultValue="1" className={styles.input}/>
 				<div></div>
 			</div>
-			<BlueButton content={isProductAdd ? "PRODUIT AJOUTE !" : "AJOUTEZ AU PANIER"} onClick={addCustomItem}></BlueButton>
 		</div>
 	)
 }
