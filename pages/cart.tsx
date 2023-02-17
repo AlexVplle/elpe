@@ -14,6 +14,7 @@ import { deleteItem, getCart, getTotalPrice } from '../lib/cart'
 export default function Cart() {
 	const [cartArray, setCartArray] = useState<Array<ContentInCart>>([])
 	useEffect(() => {
+		 localStorage.removeItem('cart')
 		setCartArray(getCart())
 	}, [])
 	return (
