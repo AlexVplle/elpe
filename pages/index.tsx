@@ -15,7 +15,7 @@ export default function Index() {
 	return (
 		<div className={styles.body}>
 			<HeadAPP />
-			<video autoPlay loop muted className={styles.video} src="clothes/elpeAccessories/home.mp4" >
+			<video autoPlay loop muted playsInline className={styles.video} src="clothes/elpeAccessories/home.mp4" >
 			</video>
 			<button className={styles.button} onClick={redirectHome}><div className={styles.textButton} id='text'>Entrez →</div><div className={styles.logo} id="logo"><Image src="/icons/logo.gif" width={70} height={70} alt={"test"}/></div></button>
 		</div>
