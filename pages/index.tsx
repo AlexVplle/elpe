@@ -13,13 +13,11 @@ export default function Index() {
 		document.getElementById('logo')!.style.display = 'inline-block'
 	}
 	return (
-		<>
+		<div className={styles.body}>
 			<HeadAPP />
-			<div className={styles.image} id="image">
-				<div></div>
-				<div></div>
-				<button className={styles.button} onClick={redirectHome}><div className='text' id='text'>Entrez →</div><div className={styles.logo} id="logo"><Image src="/icons/logo.gif" width={70} height={70} alt={"test"}/></div></button>
-			</div>
-		</>
+			<video autoPlay loop muted className={styles.video} src="clothes/elpeAccessories/home.mp4" >
+			</video>
+			<button className={styles.button} onClick={redirectHome}><div className={styles.textButton} id='text'>Entrez →</div><div className={styles.logo} id="logo"><Image src="/icons/logo.gif" width={70} height={70} alt={"test"}/></div></button>
+		</div>
 	)
 }
