@@ -19,7 +19,7 @@ export default function ElpeClub() {
 					<h3>80 PERSONNES</h3>
 					<h3>SOLD OUT</h3>
 				</div>
-				<Carousel infiniteLoop autoPlay emulateTouch interval={5000} showStatus={false} renderThumbs={() => arrayPhoto.map((img, index) => <div key={index}><Image src={`/picture/picture${img}.jpg`} alt={`soiree preview ${index}`} width={5000} height={5000} /></div>)}>
+				<Carousel infiniteLoop autoPlay emulateTouch dynamicHeight interval={5000} showStatus={false} renderThumbs={() => arrayPhoto.map((img, index) => <div key={index}><Image src={`/picture/picture${img}.jpg`} alt={`soiree preview ${index}`} width={5000} height={5000} /></div>)}>
       				{arrayPhoto.map((img, index) => <div key={index} ><img src={`/picture/picture${img}.jpg`} alt={`preview ${index}`}/></div>)}
   				</Carousel>
 			</main>

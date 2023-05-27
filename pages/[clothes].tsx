@@ -3,7 +3,7 @@ import { Clothes } from '@prisma/client'
 import { useState, useEffect } from 'react'
 import { NextPageContext } from "next"
 import Image from "next/image"
-import { Field, Formik, Form, ErrorMessage } from 'formik'
+import { Field, Formik, Form } from 'formik'
 import { Carousel } from 'react-responsive-carousel'
 import { ParsedUrlQuery } from 'querystring'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -49,7 +49,7 @@ export default function ClothesRender({ clothesRequested } : { clothesRequested 
   				</Carousel>
 				<div className={styles.content}>
 					{isPhone ? null : <h1 className={`${styles.contentBox} ${styles.name}`}>{clothesRequested.name}</h1>}
-					<h3 className={`${styles.contentBox} ${styles.price}`}>RUPTURE DE STOCK</h3>
+					<h3 className={`${styles.contentBox} ${styles.price}`}>{clothesRequested.price}</h3>
 					<p className={styles.contentBox}>{clothesRequested.description.map(function(string, index) {return (<span key={index}><span>{string}</span><br /><br /></span>)})}</p>
 					<Formik
 						initialValues={{

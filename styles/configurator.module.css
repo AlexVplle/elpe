@@ -6,8 +6,7 @@
 }
 
 .rowChoice {
-	margin-bottom: 10%;
-	text-align: center;
+	margin: 10% 0;
 	color: #000000;
 	font-size: 20px;
 }
@@ -54,7 +53,6 @@
 
 .buttonPlace {
 	display: flex;
-	justify-content: center;
 }
 
 .buttonDiv {

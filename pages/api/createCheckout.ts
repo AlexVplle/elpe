@@ -19,9 +19,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 					unit_amount: Math.round(price * 100),
 				},
 				shippable: true,
-				images: [
-					`https://res.cloudinary.com/dkxhy1nwn/${name.split(' ')[1]}`
-				]
 			})
 			return { price: default_price as string, quantity: quantity}
 		}
