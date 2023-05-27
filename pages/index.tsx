@@ -4,7 +4,6 @@ import Image from 'next/image'
 import HeadAPP from '../components/Head'
 
 import styles from '../styles/index.module.css'
-import { useEffect } from 'react'
 
 export default function Index() {
 	const router : NextRouter = useRouter()
@@ -13,19 +12,6 @@ export default function Index() {
 		document.getElementById('text')!.style.display = 'none'
 		document.getElementById('logo')!.style.display = 'inline-block'
 	}
-	useEffect(() => {
-		const handleClick = () => {
-      	const videoElement = document.getElementById("video") as HTMLVideoElement;
-      	if (videoElement && videoElement.paused) {
-        		videoElement.play();
-      	}
-    	};
-    document.body.addEventListener('DOMContentLoaded', handleClick);
-
-    return () => {
-      document.body.removeEventListener('DOMContentLoaded', handleClick);
-    };
-  }, []);
 	return (
 		<div className={styles.body}>
 			<HeadAPP />
