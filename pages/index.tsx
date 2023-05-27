@@ -20,10 +20,10 @@ export default function Index() {
         		videoElement.play();
       	}
     	};
-    document.body.addEventListener('load', handleClick);
+    document.body.addEventListener('DOMContentLoaded', handleClick);
 
     return () => {
-      document.body.removeEventListener('load', handleClick);
+      document.body.removeEventListener('DOMContentLoaded', handleClick);
     };
   }, []);
 	return (
