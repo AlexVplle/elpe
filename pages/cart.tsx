@@ -14,7 +14,6 @@ import { deleteItem, getCart, getTotalPrice } from '../lib/cart'
 export default function Cart() {
 	const [cartArray, setCartArray] = useState<Array<ContentInCart>>([])
 	useEffect(() => {
-		 localStorage.removeItem('cart')
 		setCartArray(getCart())
 	}, [])
 	return (
@@ -29,7 +28,6 @@ export default function Cart() {
 							<ImageWithLink src={src} href={href} width={5000} height={5000} alt={name}></ImageWithLink>
 							<div>
 								<h3>{name}</h3>
-								<h3>Taille : {taille}</h3>
 							</div>
 							<h3>Quantité : {quantity}</h3>
 							<h3>{Math.round(quantity * price * 100) / 100} €</h3>
