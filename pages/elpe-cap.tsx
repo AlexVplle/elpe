@@ -28,7 +28,7 @@ export default function ClothesRender({ clothesRequested } : { clothesRequested 
 	const colorArray : Array<{name: string, color: string, image: number}> = [
 		{ name: 'NOIRE', color: '#000000', image: 0},
 		{ name: 'CRÈME', color: '#eadfcc', image: 1},
-		{ name: 'MARINE', color: '#111d2f', image: 2}
+		{ name: 'MARINE', color: '#133b79', image: 2}
 	] 
 	const [color, setColor] = useState<{name: string, color: string, image: number}>(colorArray[0])
 	const [isPhone, setIsPhone] = useState<number>(2)
