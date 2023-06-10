@@ -9,7 +9,7 @@ export default function ClothesHome({href, src, name, price} : { name : string, 
         <>
             <ImageWithLink href={href} src={`/clothes/${src}`} alt={name} width={5000} height={5000} ></ImageWithLink>
             <div className={styles.link}><Link href={href}>{name}</Link></div>
-            <div className={styles.price}>{price} €</div>
+		  {name === "ELPÉ CAP" ? <div className={styles.price}>Rupture de stock</div> : <div className={styles.price}>{price} €</div>}
         </>
     )
 }
