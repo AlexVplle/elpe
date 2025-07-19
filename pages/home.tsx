@@ -1,4 +1,4 @@
-import { Clothes } from '@prisma/client'
+import { ClothesData } from '../lib/clothesData'
 
 import ClothesHome from '../components/ClothesHome'
 import Header from '../components/Header'
@@ -10,13 +10,13 @@ import styles from '../styles/home.module.css'
 
 
 export async function getServerSideProps() {
-    const allClothes : Array<Clothes> = await getAllClothes()
+    const allClothes : Array<ClothesData> = await getAllClothes()
     return {
         props: { allClothes }
     }
 }
 
-export default function Home({ allClothes }: { allClothes: Clothes[] }) {
+export default function Home({ allClothes }: { allClothes: ClothesData[] }) {
 	return (
 		<>
 			<div className={styles.body}>

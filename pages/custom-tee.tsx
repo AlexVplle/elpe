@@ -8,14 +8,14 @@ import Configurator from '../components/Configurator'
 import { CustomizationProviderTee } from '../context/customProvider'
 
 import styles from '../styles/custom.module.css'
-import { Clothes } from '@prisma/client'
+import { ClothesData } from '../lib/clothesData'
 
 const Model = lazy(() => import ('../components/ELPEMascotTee'))
 
 const Loader = () => <Html center>{useProgress().progress} % loaded</Html>
 
 export default function ElpeByYouHoodie() {
-	const tee : Clothes = {
+	const tee : ClothesData = {
 		id: '1',
 		name: 'ELPE BY YOU TEE',
 		href: '/elpe-by-you-tee',
@@ -29,12 +29,14 @@ export default function ElpeByYouHoodie() {
 			<CustomizationProviderTee>
 				<div className={styles.app}>
 						<div className={styles.canvas}>
-							<Canvas>
+							<Canvas camera={{ position: [0, 6, 10], fov: 50 }}>
 								<Suspense fallback={<Loader />}>
-									<OrbitControls enablePan={false} minPolarAngle={-Math.PI / 2} maxPolarAngle={Math.PI / 2} minAzimuthAngle={- Math.PI / 2} maxAzimuthAngle={Math.PI / 2} maxDistance={8} minDistance={5} minZoom={10000} />
-									<Stage environment="city" intensity={0.2}>
+									<OrbitControls enablePan={false} minPolarAngle={-Math.PI / 2} maxPolarAngle={Math.PI / 2} minAzimuthAngle={- Math.PI / 2} maxAzimuthAngle={Math.PI / 2} maxDistance={12} minDistance={5} minZoom={10000} target={[0, 6, 0]} />
+									<ambientLight intensity={0.3} />
+									<directionalLight position={[10, 10, 5]} intensity={0.8} />
+									<group position={[0, -2, 0]}>
 										<Model />
-									</Stage>
+									</group>
 								</Suspense>
 							</Canvas>
 						</div>

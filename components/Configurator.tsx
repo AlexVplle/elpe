@@ -12,10 +12,10 @@ import { LogoArrayCustom } from "../lib/logoForCustom";
 import { addItem } from "../lib/cart";
 
 import CustomizationContext from "../interfacesAndTypes/CustomizationContext";
-import { Clothes } from "@prisma/client";
+import { ClothesData } from "../lib/clothesData";
 
 
-export default function Configurator({ clothes } : { clothes : Clothes }) {
+export default function Configurator({ clothes } : { clothes : ClothesData }) {
 	const [isProductAdd, setProductAdd] = useState<boolean>(false)
 	const customizationHoodie : CustomizationContext = useCustomizationHoodie() as CustomizationContext
 	const customizationTee : CustomizationContext = useCustomizationTee() as CustomizationContext
@@ -29,7 +29,7 @@ export default function Configurator({ clothes } : { clothes : Clothes }) {
 			return
 		const taille : 'S' | 'M' | 'L' | 'XL' | 'XXL' = tailleString as 'S' | 'M' | 'L' | 'XL' | 'XXL'
 
-		const clothesToSend : Clothes = {...clothes}
+		const clothesToSend : ClothesData = {...clothes}
 		console.log(clothesToSend);
 		console.log(taille, quantity)
 		clothesToSend.name += ` (BASE ${color.name}; LOGO ${logo.name} ${logoColor.name})`

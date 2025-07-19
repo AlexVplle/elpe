@@ -1,4 +1,4 @@
-import { Clothes } from '@prisma/client'
+import { ClothesData } from '../lib/clothesData'
 
 import { useState, useEffect } from 'react'
 import Image from "next/image"
@@ -16,13 +16,20 @@ import { NextRouter, useRouter } from 'next/router'
 
 export async function getServerSideProps() {
 	const clothes : string = 'elpe-by-you-tee'
-	const clothesRequested : Clothes = await getOneClothes(clothes as string)
+	const clothesRequested : ClothesData | null = await getOneClothes(clothes as string)
+	
+	if (!clothesRequested) {
+		return {
+			notFound: true
+		}
+	}
+	
 	return {
 		props: { clothesRequested } 
 	}
 }
 
-export default function ClothesRender({ clothesRequested } : { clothesRequested : Clothes }) {
+export default function ClothesRender({ clothesRequested } : { clothesRequested : ClothesData }) {
 	const [isClicked, setClicked] = useState<boolean>(false)
 	const [isPhone, setIsPhone] = useState<number>(2)
 	const router : NextRouter = useRouter()

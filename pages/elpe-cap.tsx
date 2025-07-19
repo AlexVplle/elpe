@@ -1,4 +1,4 @@
-import { Clothes } from '@prisma/client'
+import { ClothesData } from '../lib/clothesData'
 
 import { useState, useEffect } from 'react'
 import Image from "next/image"
@@ -17,14 +17,21 @@ import styles from '../styles/clothes.module.css'
 import stylesConfigurator from '../styles/configurator.module.css'
 
 export async function getServerSideProps() {
-	const clothesRequested : Clothes = await getOneClothes('elpe-cap')
+	const clothesRequested : ClothesData | null = await getOneClothes('elpe-cap')
+	
+	if (!clothesRequested) {
+		return {
+			notFound: true
+		}
+	}
+	
 	return {
 		props: { clothesRequested } 
 	}
 }
 
 
-export default function ClothesRender({ clothesRequested } : { clothesRequested : Clothes }) {
+export default function ClothesRender({ clothesRequested } : { clothesRequested : ClothesData }) {
 	const colorArray : Array<{name: string, color: string, image: number}> = [
 		{ name: 'NOIRE', color: '#000000', image: 0},
 		{ name: 'CRÈME', color: '#eadfcc', image: 1},
@@ -60,7 +67,7 @@ export default function ClothesRender({ clothesRequested } : { clothesRequested 
 							quantity : 1
 						}}
 						onSubmit={(values : { quantity: number }, actions) => {
-							const clothesToSend : Clothes = {...clothesRequested}
+							const clothesToSend : ClothesData = {...clothesRequested}
 							clothesToSend.name += ` ${color.name}`
 							addItem(clothesToSend, "", values.quantity, clothesRequested.src[color.image])
 							setProductAdd(true)

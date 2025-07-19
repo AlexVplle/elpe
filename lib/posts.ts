@@ -1,13 +1,9 @@
-import { Clothes, PrismaClient } from '@prisma/client'
+import { clothesArray, ClothesData } from './clothesData'
 
-let prisma : PrismaClient | null = null;
-if (prisma == null)
-	prisma = new PrismaClient()
-
-export async function getAllClothes() {
-	return await (prisma as PrismaClient).clothes.findMany()
+export async function getAllClothes(): Promise<ClothesData[]> {
+	return clothesArray
 }
 
-export async function getOneClothes(hrefParam: string) {
-	return await (prisma as PrismaClient).clothes.findFirst({ where : { href: `/${hrefParam}` } }) as Clothes
+export async function getOneClothes(hrefParam: string): Promise<ClothesData | null> {
+	return clothesArray.find(clothes => clothes.href === `/${hrefParam}`) || null
 }

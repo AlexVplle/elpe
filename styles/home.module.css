@@ -1,3 +1,9 @@
+.body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 .main {
     padding: 5%;
     display: grid;
@@ -7,6 +13,7 @@
     background-color: #FFFFFF;
     color: rgba(64,64,64,.6);
     font-size: 1.3em;
+    flex: 1;
 }
 
 .div {

@@ -1,4 +1,4 @@
-import { Clothes } from '@prisma/client'
+import { ClothesData } from '../lib/clothesData'
 
 import { useState, useEffect } from 'react'
 import { NextPageContext } from "next"
@@ -19,14 +19,21 @@ import styles from '../styles/clothes.module.css'
 
 export async function getServerSideProps(context : NextPageContext) {
 	const { clothes } : ParsedUrlQuery = context.query
-	const clothesRequested : Clothes = await getOneClothes(clothes as string)
+	const clothesRequested : ClothesData | null = await getOneClothes(clothes as string)
+	
+	if (!clothesRequested) {
+		return {
+			notFound: true
+		}
+	}
+	
 	return {
 		props: { clothesRequested } 
 	}
 }
 
 
-export default function ClothesRender({ clothesRequested } : { clothesRequested : Clothes }) {
+export default function ClothesRender({ clothesRequested } : { clothesRequested : ClothesData }) {
 	const [isPhone, setIsPhone] = useState<number>(2)
 	const [isProductAdd, setProductAdd] = useState<boolean>(false)
 	useEffect(() => {
@@ -49,21 +56,31 @@ export default function ClothesRender({ clothesRequested } : { clothesRequested 
   				</Carousel>
 				<div className={styles.content}>
 					{isPhone ? null : <h1 className={`${styles.contentBox} ${styles.name}`}>{clothesRequested.name}</h1>}
-					<h3 className={`${styles.contentBox} ${styles.price}`}>{clothesRequested.price}</h3>
+					<h3 className={`${styles.contentBox} ${styles.price}`}>{clothesRequested.price}€</h3>
 					<p className={styles.contentBox}>{clothesRequested.description.map(function(string, index) {return (<span key={index}><span>{string}</span><br /><br /></span>)})}</p>
 					<Formik
 						initialValues={{
-							quantity : 1
+							quantity : 1,
+							size: "M"
 						}}
-						onSubmit={(values : { quantity: number }) => {
-							const clothesToSend : Clothes = {...clothesRequested}
-							addItem(clothesToSend, "", values.quantity, clothesRequested.src[1])
+						onSubmit={(values : { quantity: number, size: string }) => {
+							const clothesToSend : ClothesData = {...clothesRequested}
+							addItem(clothesToSend, values.size, values.quantity, clothesRequested.src[1])
 							setProductAdd(true)
 							setTimeout(() => setProductAdd(false), 1000)
 						}}
 					>
 						<Form className={styles.form}>
 							<div className={`${styles.contentBox} ${styles.labelForm}`}>
+								<label htmlFor="size">TAILLE :</label>
+								<Field name="size" as="select" className={styles.input}>
+									<option value="XS">XS</option>
+									<option value="S">S</option>
+									<option value="M">M</option>
+									<option value="L">L</option>
+									<option value="XL">XL</option>
+									<option value="XXL">XXL</option>
+								</Field>
 								<label htmlFor="quantity">QUANTITÉ :</label>
 								<Field name='quantity' max="9999" min="1" type="number" placeholder="1" className={styles.input}/>
 								<BlueButton content={isProductAdd ? "PRODUIT AJOUTE !" : "AJOUTEZ AU PANIER"}></BlueButton>

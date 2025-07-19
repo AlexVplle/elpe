@@ -1,4 +1,4 @@
-import { Clothes } from "@prisma/client";
+import { ClothesData } from './clothesData';
 import ContentInCart from '../interfacesAndTypes/contentInCart'
 
 export const getCart = () : Array<ContentInCart> => {
@@ -9,7 +9,7 @@ export const getCart = () : Array<ContentInCart> => {
 		return JSON.parse(cartArrayString)
 }
 
-export const addItem = ({ name, href, price } : Clothes, taille : 'S' | 'M' | 'L' | 'XL' | 'XXL' | '30x40cm' | '45x60cm' | "", quantity : number, src : string) : void => {
+export const addItem = ({ name, href, price } : ClothesData, taille : 'S' | 'M' | 'L' | 'XL' | 'XXL' | '30x40cm' | '45x60cm' | "", quantity : number, src : string) : void => {
 	const newContent : ContentInCart = {
 		name : name,
 		taille : taille,
