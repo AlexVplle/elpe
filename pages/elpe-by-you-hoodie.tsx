@@ -53,7 +53,7 @@ export default function ClothesRender({ clothesRequested } : { clothesRequested 
 			<main className={styles.main}>
 				{isPhone ? <h1 className={`${styles.contentBox} ${styles.name}`}>{clothesRequested.name}</h1> : null }
 				<Carousel infiniteLoop autoPlay emulateTouch interval={5000} showStatus={false} renderThumbs={() => clothesRequested.src.map((img, index) => <div key={index}><Image src={`/clothes/${img}`} alt="logo" width={5000} height={5000}></Image></div>)}>
-      				{clothesRequested.src.map((img, index) => <div key={index} ><img src={`/clothes/${img}`} alt={`preview ${index}`}/></div>)}
+      				{clothesRequested.src.map((img, index) => <div key={index} ><Image src={`/clothes/${img}`} alt={`preview ${index}`} width={5000} height={5000}/></div>)}
   				</Carousel>
 				<div className={styles.content}>
 					{isPhone ? null : <h1 className={`${styles.contentBox} ${styles.name}`}>{clothesRequested.name}</h1>}

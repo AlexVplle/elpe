@@ -15,7 +15,7 @@ export default function Index() {
 	return (
 		<div className={styles.body}>
 			<HeadAPP />
-			<img id="video" className={styles.video} src="clothes/elpeAccessories/home.gif" alt='video collier' />
+			<Image id="video" className={styles.video} src="/clothes/elpeAccessories/home.gif" alt='video collier' width={1920} height={1080} />
 			<button className={styles.button} onClick={redirectHome}><div className={styles.textButton} id='text'>Entrez →</div><div className={styles.logo} id="logo"><Image src="/icons/logo.gif" width={70} height={70} alt={"test"}/></div></button>
 		</div>
 	)

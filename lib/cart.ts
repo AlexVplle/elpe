@@ -1,6 +1,8 @@
 import { ClothesData } from './clothesData';
 import ContentInCart from '../interfacesAndTypes/contentInCart'
 
+export type AllowedSize = 'S' | 'M' | 'L' | 'XL' | 'XXL' | '30x40cm' | '45x60cm' | "";
+
 export const getCart = () : Array<ContentInCart> => {
 	const cartArrayString : string | null = localStorage.getItem('cart')
 	if (cartArrayString === null)
@@ -9,7 +11,7 @@ export const getCart = () : Array<ContentInCart> => {
 		return JSON.parse(cartArrayString)
 }
 
-export const addItem = ({ name, href, price } : ClothesData, taille : 'S' | 'M' | 'L' | 'XL' | 'XXL' | '30x40cm' | '45x60cm' | "", quantity : number, src : string) : void => {
+export const addItem = ({ name, href, price } : ClothesData, taille : AllowedSize, quantity : number, src : string) : void => {
 	const newContent : ContentInCart = {
 		name : name,
 		taille : taille,
