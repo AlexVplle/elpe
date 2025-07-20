@@ -9,6 +9,12 @@ services:
     restart: unless-stopped
     networks:
       - traefik_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.elpe.rule=Host(`elpe.alexvplle.com`)"
