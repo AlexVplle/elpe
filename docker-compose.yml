@@ -20,6 +20,8 @@ services:
       - "traefik.http.routers.elpe.rule=Host(`elpe.alexvplle.com`)"
       - "traefik.http.routers.elpe.entrypoints=websecure"
       - "traefik.http.services.elpe.loadbalancer.server.port=3000"
+      - "traefik.http.routers.elpe.tls=true"
+      - "traefik.http.routers.elpe.tls.certresolver=letsencrypt"
 
 networks:
   traefik_network:
