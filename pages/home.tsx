@@ -24,10 +24,11 @@ export default function Home({ allClothes }: { allClothes: ClothesData[] }) {
 				<Image 
 					src="/clothes/elpeAccessories/home.gif"
 					alt="ELPE Hero"
-					fill
 					priority
 					className={styles.heroGif}
 					unoptimized
+					layout="fill"
+					objectFit="cover"
 				/>
 			</div>
 			<div className={styles.body}>
