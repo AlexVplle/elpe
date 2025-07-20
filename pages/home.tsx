@@ -19,29 +19,16 @@ export async function getServerSideProps() {
 
 export default function Home({ allClothes }: { allClothes: ClothesData[] }) {
 	return (
-		<>
-			<div className={styles.heroSection}>
-				<Image 
-					src="/clothes/elpeAccessories/home.gif"
-					alt="ELPE Hero"
-					priority
-					className={styles.heroGif}
-					unoptimized
-					layout="fill"
-					objectFit="cover"
-				/>
-			</div>
-			<div className={styles.body}>
-				<Header elpeClub={false}></Header>
-				<main className={styles.main}>
-					{allClothes.map(({ name, href, src, price }, index) => (
-						<div key={index}>
-							<ClothesHome name={name} href={href} src={src[0]} price={price} ></ClothesHome>
-						</div>
-					))}
-				</main>
-				<Footer />
-			</div>
-		</>
+		<div className={styles.body}>
+			<Header elpeClub={false}></Header>
+			<main className={styles.main}>
+				{allClothes.map(({ name, href, src, price }, index) => (
+					<div key={index}>
+						<ClothesHome name={name} href={href} src={src[0]} price={price} ></ClothesHome>
+					</div>
+				))}
+			</main>
+			<Footer />
+		</div>
     )
 }
